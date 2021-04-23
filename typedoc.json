@@ -1,0 +1,13 @@
+{
+  "readme": "README.md",
+  "includeVersion": true,
+  "name": "Pouli",
+  "theme": "default",
+  "entryPoints": ["src/index.ts"],
+  "out": "documentation",
+  "tsconfig": "tsconfig.json",
+  "excludePrivate": true,
+  "excludeProtected": true,
+  "excludeExternals": true,
+  "listInvalidSymbolLinks": false
+}
