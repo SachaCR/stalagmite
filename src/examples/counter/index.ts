@@ -3,7 +3,7 @@ import { buildCount, buildInit, buildReset } from "./behaviours";
 import { counterEventResolver, CounterEvents } from "./events";
 
 export interface Counter extends Aggregate<CounterState, CounterEvents> {
-  init(counterId: string): "SUCCESS" | "FAILURE";
+  init(counterId: string, initialCount: number): "SUCCESS" | "FAILURE";
   count(number: number): "SUCCESS" | "FAILURE";
   reset(): "SUCCESS" | "FAILURE";
 }
@@ -25,6 +25,10 @@ export function createCounter(
     uncommitedEvents: [],
     commandId: commandId,
   };
+
+  if (snapshot) {
+    snapshot.commandId = commandId; // Override snapshot previous command id
+  }
 
   const currentState = snapshot || initialState;
 

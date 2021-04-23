@@ -1,10 +1,18 @@
 import { createCounter } from ".";
 import { Command } from "../../interfaces";
-import { buildEventStore } from "./eventStore";
+import { buildEventStore } from "./mocks/eventStore";
 
 const eventStore = buildEventStore(); // This mock an event store interface for example puposes.
 
 // COMMANDS
+export interface InitCounter extends Command {
+  name: "InitCounter";
+  payload: {
+    counterId: string;
+    initialCount: number;
+  };
+}
+
 export interface CountNumber extends Command {
   name: "CountNumber";
   payload: {
@@ -20,22 +28,15 @@ export interface ResetCounter extends Command {
   };
 }
 
-export interface CreateCounter extends Command {
-  name: "CreateCounter";
-  payload: {
-    counterId: string;
-  };
-}
-
 // COMMAND HANDLERS
 export async function createCounterHandler(
-  command: CreateCounter
+  command: InitCounter
 ): Promise<"SUCCESS" | "FAILURE"> {
-  const { counterId } = command.payload;
+  const { counterId, initialCount } = command.payload;
 
   // Create the aggregate
   const counter = createCounter(command.id);
-  counter.init(counterId); // Use aggregate behaviour to do business logic
+  counter.init(counterId, initialCount); // Use aggregate behaviour to do business logic
 
   const uncomitedEvents = counter.getUncommmitedEvents(); // Retrieve resulting events from business logic
   const result = await eventStore.save(uncomitedEvents); // Save them in the event store

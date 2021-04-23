@@ -8,7 +8,10 @@ import {
 } from "./events";
 
 export function buildInit(aggregate: Aggregate<CounterState, CounterEvents>) {
-  return function init(counterId: string): "SUCCESS" | "FAILURE" {
+  return function init(
+    counterId: string,
+    initialCount: number
+  ): "SUCCESS" | "FAILURE" {
     const state = aggregate.state();
 
     // Business rules
@@ -17,8 +20,13 @@ export function buildInit(aggregate: Aggregate<CounterState, CounterEvents>) {
       return "FAILURE";
     }
 
+    // We count only positive numbers
+    if (initialCount <= 0) {
+      return "FAILURE";
+    }
+
     // Create the event
-    const event = counterInitiated(state, counterId, 0);
+    const event = counterInitiated(state, counterId, initialCount);
 
     // Add it to aggregate
     return aggregate.addEvent(event);

@@ -89,7 +89,7 @@ function eventResolver(
   switch (event.name) {
     case "CounterInitiated":
       state.id = event.payload.counterId;
-      state.count = 0;
+      state.count = event.payload.count;
       break;
 
     case "NumberCounted":

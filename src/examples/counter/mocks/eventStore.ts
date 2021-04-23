@@ -1,5 +1,5 @@
-import { CounterState } from ".";
-import { CounterEvents } from "./events";
+import { CounterState } from "..";
+import { CounterEvents } from "../events";
 
 // This file is just a mock to make typscript happy in examples.
 export function buildEventStore(): EventStore {
