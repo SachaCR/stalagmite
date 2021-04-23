@@ -2,8 +2,8 @@
 
 ## TODO :
 
-- [] Implement outcome pattern
-- [] Setup package.json to be ready to publish
-- [] Write a proper read me with examples
+- [] Implement outcome pattern and determine error format
 - [] Test the framework
-- [] Test the example
+- [] Test the examples
+- [] Write a proper read me with examples
+- [] Setup package.json to be ready to publish
