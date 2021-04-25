@@ -1,6 +1,6 @@
 {
   "name": "stalagmite",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Event sourcing library that helps you building event sourced aggregates.",
   "main": "dist/src/index.js",
   "scripts": {
