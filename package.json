@@ -2,7 +2,11 @@
   "name": "stalagmite",
   "version": "0.0.3",
   "description": "Event sourcing library that helps you building event sourced aggregates.",
-  "main": "dist/src/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "build": "tsc",
     "typecheck": "tsc --noEmit",
