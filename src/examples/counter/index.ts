@@ -1,11 +1,12 @@
 import { Aggregate, AggregateState, buildAggregate } from "../..";
+import { Outcome } from "../../interfaces";
 import { buildCount, buildInit, buildReset } from "./behaviours";
 import { counterEventResolver, CounterEvents } from "./events";
 
 export interface Counter extends Aggregate<CounterState, CounterEvents> {
-  init(counterId: string, initialCount: number): "SUCCESS" | "FAILURE";
-  count(number: number): "SUCCESS" | "FAILURE";
-  reset(): "SUCCESS" | "FAILURE";
+  init(counterId: string, initialCount: number): Outcome;
+  count(number: number): Outcome;
+  reset(): Outcome;
 }
 
 export interface CounterState extends AggregateState<CounterEvents> {

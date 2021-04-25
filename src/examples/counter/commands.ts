@@ -1,5 +1,5 @@
 import { createCounter } from ".";
-import { Command } from "../../interfaces";
+import { Command, Outcome } from "../../interfaces";
 import { buildEventStore } from "./mocks/eventStore";
 
 const eventStore = buildEventStore(); // This mock an event store interface for example puposes.
@@ -31,7 +31,7 @@ export interface ResetCounter extends Command {
 // COMMAND HANDLERS
 export async function createCounterHandler(
   command: InitCounter
-): Promise<"SUCCESS" | "FAILURE"> {
+): Promise<Outcome> {
   const { counterId, initialCount } = command.payload;
 
   // Create the aggregate
@@ -41,18 +41,21 @@ export async function createCounterHandler(
   const uncomitedEvents = counter.getUncommmitedEvents(); // Retrieve resulting events from business logic
   const result = await eventStore.save(uncomitedEvents); // Save them in the event store
 
-  if (result === "FAILURE") {
+  if (result.outcome === "FAILURE") {
     return result;
   }
 
   counter.eventsCommited(); // Clear the uncomitted events
 
-  return "SUCCESS";
+  return {
+    outcome: "SUCCESS",
+    data: {},
+  };
 }
 
 export async function counterNumberHandler(
   command: CountNumber
-): Promise<"SUCCESS" | "FAILURE"> {
+): Promise<Outcome> {
   const { counterId, number } = command.payload;
 
   const snapshot = await eventStore.getLatestSnapshot(counterId); // Retrieve the latest snapshot for this accountId
@@ -65,18 +68,21 @@ export async function counterNumberHandler(
   const uncomitedEvents = counter.getUncommmitedEvents(); // Retrieve business logic resulting events
   const result = await eventStore.save(uncomitedEvents); // Save them in the event store
 
-  if (result === "FAILURE") {
+  if (result.outcome === "FAILURE") {
     return result;
   }
 
   counter.eventsCommited(); // Clear the uncommited events
 
-  return "SUCCESS";
+  return {
+    outcome: "SUCCESS",
+    data: {},
+  };
 }
 
 export async function resetCounterHandler(
   command: ResetCounter
-): Promise<"SUCCESS" | "FAILURE"> {
+): Promise<Outcome> {
   const { counterId } = command.payload;
 
   const snapshot = await eventStore.getLatestSnapshot(counterId); // Retrieve the latest snapshot for this accountId
@@ -89,11 +95,14 @@ export async function resetCounterHandler(
   const uncomitedEvents = counter.getUncommmitedEvents(); // Retrieve business logic resulting events
   const result = await eventStore.save(uncomitedEvents); // Save them in the event store
 
-  if (result === "FAILURE") {
+  if (result.outcome === "FAILURE") {
     return result;
   }
 
   counter.eventsCommited(); // Clear the uncommited events
 
-  return "SUCCESS";
+  return {
+    outcome: "SUCCESS",
+    data: {},
+  };
 }

@@ -1,4 +1,11 @@
-import { AggregateState, Aggregate, Event, EventResolver } from "./interfaces";
+import {
+  AggregateState,
+  Aggregate,
+  Event,
+  EventResolver,
+  Outcome,
+  OutcomeSuccess,
+} from "./interfaces";
 
 export function buildAggregate<S extends AggregateState<E>, E extends Event>(
   state: S,
@@ -11,7 +18,7 @@ export function buildAggregate<S extends AggregateState<E>, E extends Event>(
     getAllEvents: () => state.allEvents,
     getUncommmitedEvents: () => state.uncommitedEvents,
     eventsCommited: () => (state.uncommitedEvents = []),
-    state: () => Object.assign({}, state), // Warning this is a not deep copy. You should never manipulate state outside aggregate boundaries.
+    state: () => Object.assign({}, state), // Warning this is a not deep copy. State should never be manipulated outside aggregate boundaries.
   };
 }
 
@@ -19,37 +26,66 @@ function apply<S extends AggregateState<E>, E extends Event>(
   state: S,
   events: E | E[],
   resolver: EventResolver<S, E>
-): "FAILURE" | "SUCCESS" {
+): Outcome {
   const eventList = Array.isArray(events) ? events : [events];
+  const successOutcomes: OutcomeSuccess[] = [];
 
   for (let i = 0; i < eventList.length; i++) {
     const event = eventList[i];
 
     if (event.sequence !== state.sequence + 1) {
-      return "FAILURE";
+      return {
+        outcome: "FAILURE",
+        errorCode: "APPLY_EVENT_FAILED",
+        reason: "Incoherent sequence",
+        data: {
+          event: event,
+          stateSequence: state.sequence,
+        },
+      };
     }
 
-    const result = resolver(state, event);
+    try {
+      const result = resolver(state, event);
 
-    if (result === "FAILURE") {
-      return "FAILURE";
+      if (result.outcome === "FAILURE") {
+        return result;
+      }
+
+      successOutcomes.push(result);
+    } catch (error) {
+      return {
+        outcome: "FAILURE",
+        errorCode: "APPLY_EVENT_FAILED",
+        reason: "Resolver thrown an error",
+        data: {
+          error: error.name,
+          message: error.message,
+          stack: error.stack,
+        },
+      };
     }
 
     state.allEvents.push(event);
     state.sequence += 1;
   }
 
-  return "SUCCESS";
+  return {
+    outcome: "SUCCESS",
+    data: {
+      results: successOutcomes,
+    },
+  };
 }
 
 function addEvent<S extends AggregateState<E>, E extends Event>(
   state: S,
   event: E,
   resolver: EventResolver<S, E>
-): "FAILURE" | "SUCCESS" {
+): Outcome {
   const result = apply(state, event, resolver);
 
-  if (result === "FAILURE") {
+  if (result.outcome === "FAILURE") {
     return result;
   }
 

@@ -1,6 +1,6 @@
 export interface Aggregate<S extends AggregateState<E>, E extends Event> {
-  apply(events: Event | Event[]): "SUCCESS" | "FAILURE";
-  addEvent(events: E): "SUCCESS" | "FAILURE";
+  apply(events: Event | Event[]): Outcome;
+  addEvent(events: E): Outcome;
   eventsCommited(): void;
 
   getSequence(): number;
@@ -17,11 +17,11 @@ export interface AggregateState<E extends Event> {
 }
 
 export interface Event {
-  entityId: string;
-  version: number;
-  commandId: string;
-  sequence: number;
   name: string;
+  version: number;
+  sequence: number;
+  commandId: string;
+  entityId: string;
   payload: unknown;
 }
 
@@ -35,4 +35,41 @@ export interface Command {
 export type EventResolver<S extends AggregateState<E>, E extends Event> = (
   state: S,
   event: E
-) => "SUCCESS" | "FAILURE";
+) => Outcome;
+
+export type Outcome = OutcomeSuccess | OutcomeFailure;
+
+/**
+ * It represent an operation result that has failed.
+ * @category Outcome
+ */
+export interface OutcomeFailure {
+  outcome: "FAILURE";
+  /**
+   * It's a specific error code relative to the error.
+   */
+  errorCode: string;
+  /**
+   * The explanation why the error happened.
+   */
+  reason: string;
+  /**
+   * You can put anything usefull to understand the error.
+   * You should not let it to any and type it in your implementation.
+   */
+  data: any;
+}
+
+/**
+ * It represent an operation result that succeeded.
+ * @category Outcome
+ */
+export interface OutcomeSuccess {
+  outcome: "SUCCESS";
+  /**
+   * It's the result of the operation.
+   * It can be a domain event or anything you wants.
+   * You should not let it to any and type it in your implementation.
+   */
+  data: any;
+}

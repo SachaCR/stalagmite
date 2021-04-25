@@ -7,9 +7,9 @@ describe("createCounter()", () => {
       describe("With no snapshot", () => {
         it("Then it returns a counter in initial state version 0", () => {
           const commandId = "command-id";
-          const accountBalance = createCounter(commandId);
+          const counter = createCounter(commandId);
 
-          expect(accountBalance.state()).toStrictEqual({
+          expect(counter.state()).toStrictEqual({
             commandId: "command-id",
             id: "none",
             sequence: 0,
@@ -44,9 +44,9 @@ describe("createCounter()", () => {
             uncommitedEvents: [],
           };
 
-          const accountBalance = createCounter(commandId, snapshot);
+          const counter = createCounter(commandId, snapshot);
 
-          expect(accountBalance.state()).toStrictEqual({
+          expect(counter.state()).toStrictEqual({
             commandId: "current-command-id",
             id: "counter-id-1",
             sequence: 1,
