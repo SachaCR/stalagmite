@@ -2,6 +2,10 @@
 
 Stalagmite is a library that helps you building event sourced aggregates.
 
+# typedoc:
+
+[typedoc here](https://sachacr.github.io/stalagmite/)
+
 # Example:
 
 In this example we will create a simple aggregate for a counter. Find the complete [counter example here](https://github.com/SachaCR/stalagmite/tree/main/src/examples/counter)
@@ -180,6 +184,6 @@ export async function counterNumberHandler(
 
 # TODO
 
-- [] Finish tests
-- [] Improve README.md with more details and explanations
-- [] Complete typedoc
+- [ ] Finish tests
+- [ ] Improve README.md with more details and explanations
+- [ ] Complete typedoc
