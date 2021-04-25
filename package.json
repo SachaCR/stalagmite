@@ -15,7 +15,7 @@
     "all": "npm run typecheck && npm run build && npm test && npm run doc",
     "open:doc": "open documentation/index.html",
     "open:coverage": "open coverage/lcov-report/index.html",
-    "preversion": "npm test",
+    "preversion": "npm test && npm run doc",
     "version": "npm run build",
     "postversion": "git push && git push --tags"
   },
