@@ -182,3 +182,4 @@ export async function counterNumberHandler(
 
 - [] Finish tests
 - [] Improve README.md with more details and explanations
+- [] Complete typedoc

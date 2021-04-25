@@ -4,8 +4,11 @@
 
   "compilerOptions": {
     "lib": ["es2020"],
+    "outDir": "dist",
+
     "module": "commonjs",
     "target": "es2020",
+    "declaration": true,
 
     "strict": true,
     "esModuleInterop": true,
@@ -17,6 +20,7 @@
     "documentation",
     "coverage",
     "dist",
-    "src/examples"
+    "src/examples",
+    "src/__tests__"
   ]
 }
