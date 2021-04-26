@@ -63,6 +63,26 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This is the event interface</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><pre><code class="language-typescript"><span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">interface</span><span style="color: #000000"> </span><span style="color: #267F99">CounterInitiated</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Event</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #001080">name</span><span style="color: #000000">: </span><span style="color: #A31515">&quot;CounterInitiated&quot;</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #001080">version</span><span style="color: #000000">: </span><span style="color: #098658">1</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #001080">payload</span><span style="color: #000000">: {</span>
+<span style="color: #000000">    </span><span style="color: #001080">counterId</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
+<span style="color: #000000">    </span><span style="color: #001080">count</span><span style="color: #000000">: </span><span style="color: #267F99">number</span><span style="color: #000000">;</span>
+<span style="color: #000000">  };</span>
+<span style="color: #000000">}</span>
+</code></pre>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -97,9 +117,14 @@
 					<div class="tsd-signature tsd-kind-icon">command<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L23">interfaces.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L112">interfaces.ts:112</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The command id that has generated this event.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="entityid" class="tsd-anchor"></a>
@@ -107,9 +132,14 @@
 					<div class="tsd-signature tsd-kind-icon">entity<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L24">interfaces.ts:24</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L117">interfaces.ts:117</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This is the aggregate id.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="name" class="tsd-anchor"></a>
@@ -117,9 +147,14 @@
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L20">interfaces.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L98">interfaces.ts:98</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The name of the event</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="payload" class="tsd-anchor"></a>
@@ -127,9 +162,14 @@
 					<div class="tsd-signature tsd-kind-icon">payload<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">unknown</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L25">interfaces.ts:25</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L122">interfaces.ts:122</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The payload of your event.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="sequence" class="tsd-anchor"></a>
@@ -137,9 +177,14 @@
 					<div class="tsd-signature tsd-kind-icon">sequence<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L22">interfaces.ts:22</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L107">interfaces.ts:107</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>It&#39;s the place of the event in the history of the aggregate.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="version" class="tsd-anchor"></a>
@@ -147,9 +192,14 @@
 					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L21">interfaces.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L102">interfaces.ts:102</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The version of the event. Used to track schemas evolution of your events.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>

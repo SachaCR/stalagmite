@@ -63,6 +63,22 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This is the aggregate state interface</p>
+					</div>
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><pre><code class="language-typescript"><span style="color: #0000FF">interface</span><span style="color: #000000"> </span><span style="color: #267F99">CounterState</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">AggregateState</span><span style="color: #000000">&lt;</span><span style="color: #267F99">CounterEvents</span><span style="color: #000000">&gt; {</span>
+<span style="color: #000000">  </span><span style="color: #001080">id</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #001080">count</span><span style="color: #000000">: </span><span style="color: #267F99">number</span><span style="color: #000000">;</span>
+<span style="color: #000000">}</span>
+</code></pre>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
@@ -103,9 +119,14 @@
 					<div class="tsd-signature tsd-kind-icon">all<wbr>Events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L15">interfaces.ts:15</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L69">interfaces.ts:69</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>All the events that has generate the current state.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="commandid" class="tsd-anchor"></a>
@@ -113,9 +134,14 @@
 					<div class="tsd-signature tsd-kind-icon">command<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L14">interfaces.ts:14</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L64">interfaces.ts:64</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The command id related to this sequence.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="sequence" class="tsd-anchor"></a>
@@ -123,9 +149,14 @@
 					<div class="tsd-signature tsd-kind-icon">sequence<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L13">interfaces.ts:13</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L59">interfaces.ts:59</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This is history revision of the aggregate.</p>
+						</div>
+					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="uncommitedevents" class="tsd-anchor"></a>
@@ -133,9 +164,14 @@
 					<div class="tsd-signature tsd-kind-icon">uncommited<wbr>Events<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L16">interfaces.ts:16</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L74">interfaces.ts:74</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>All the events that your current operations on the aggregate has generated that need to be persisted in your event store / repository.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 		</div>

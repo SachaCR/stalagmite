@@ -7,6 +7,44 @@ import {
   OutcomeSuccess,
 } from "./interfaces";
 
+
+/**
+ * Use this function to build your aggregate instances.
+ * @param state The current state of you aggregate
+ * @param resolver The EventResolver your aggregate will use to mutate the state.
+ * @returns This function will return an new aggregate instance.
+ * @example
+ * ```typescript
+ * export function createCounter(
+ *   commandId: string,
+ *   snapshot?: CounterState
+ * ): Counter {
+ *   const initialState: CounterState = {
+ *     id: "none",
+ *     count: 0,
+ *     sequence: 0,
+ *     allEvents: [],
+ *     uncommitedEvents: [],
+ *     commandId: commandId,
+ *   };
+ * 
+ *   if (snapshot) {
+ *     snapshot.commandId = commandId; // Override snapshot previous command id
+ *   }
+ * 
+ *   const currentState = snapshot || initialState;
+ * 
+ *   const aggregate = buildAggregate(currentState, counterEventResolver);
+ * 
+ *   return {
+ *     init: buildInit(aggregate),
+ *     count: buildCount(aggregate),
+ *     reset: buildReset(aggregate),
+ *     ...aggregate,
+ *   };
+ * }
+ * ```
+ */
 export function buildAggregate<S extends AggregateState<E>, E extends Event>(
   state: S,
   resolver: EventResolver<S, E>

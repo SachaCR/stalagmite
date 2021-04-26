@@ -60,11 +60,17 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Other Interfaces</h3>
+							<h3>Aggregate Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/aggregate.html" class="tsd-kind-icon">Aggregate</a></li>
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/aggregatestate.html" class="tsd-kind-icon">Aggregate<wbr>State</a></li>
+							</ul>
+							<h3>Commands Interfaces</h3>
+							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface"><a href="interfaces/command.html" class="tsd-kind-icon">Command</a></li>
+							</ul>
+							<h3>Events Interfaces</h3>
+							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface"><a href="interfaces/event.html" class="tsd-kind-icon">Event</a></li>
 							</ul>
 							<h3>Outcome Interfaces</h3>
@@ -74,9 +80,12 @@
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
-							<h3>Type aliases</h3>
+							<h3>Events Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#eventresolver" class="tsd-kind-icon">Event<wbr>Resolver</a></li>
+							</ul>
+							<h3>Outcome Type aliases</h3>
+							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias"><a href="modules.html#outcome" class="tsd-kind-icon">Outcome</a></li>
 							</ul>
 						</section>
@@ -94,16 +103,51 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Type aliases</h2>
+				<h2>Events Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-has-type-parameter">
 					<a name="eventresolver" class="tsd-anchor"></a>
 					<h3>Event<wbr>Resolver</h3>
 					<div class="tsd-signature tsd-kind-icon">Event<wbr>Resolver&lt;S, E&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="modules.html#outcome" class="tsd-signature-type" data-tsd-kind="Type alias">Outcome</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L35">interfaces.ts:35</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L192">interfaces.ts:192</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>This is the function you aggregate will use to mutate your state. If you know redux it&#39;s like a reducer.</p>
+						</div>
+						<dl class="tsd-comment-tags">
+							<dt>example</dt>
+							<dd><pre><code class="language-typescript"><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">eventResolver</span><span style="color: #000000">(</span><span style="color: #001080">state</span><span style="color: #000000">: </span><span style="color: #267F99">CounterState</span><span style="color: #000000">, </span><span style="color: #001080">event</span><span style="color: #000000">: </span><span style="color: #267F99">CounterEvents</span><span style="color: #000000">): </span><span style="color: #267F99">Outcome</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">switch</span><span style="color: #000000"> (</span><span style="color: #001080">event</span><span style="color: #000000">.</span><span style="color: #001080">name</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;CounterInitiated&quot;</span><span style="color: #000000">:</span>
+<span style="color: #000000">      </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">id</span><span style="color: #000000"> = </span><span style="color: #001080">event</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">counterId</span><span style="color: #000000">;</span>
+<span style="color: #000000">      </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">count</span><span style="color: #000000"> = </span><span style="color: #001080">event</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">count</span><span style="color: #000000">;</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">break</span><span style="color: #000000">;</span>
+
+<span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;NumberCounted&quot;</span><span style="color: #000000">:</span>
+<span style="color: #000000">      </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">count</span><span style="color: #000000"> += </span><span style="color: #001080">event</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">number</span><span style="color: #000000">;</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">break</span><span style="color: #000000">;</span>
+
+<span style="color: #000000">    </span><span style="color: #AF00DB">case</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;CounterReseted&quot;</span><span style="color: #000000">:</span>
+<span style="color: #000000">      </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">count</span><span style="color: #000000"> = </span><span style="color: #001080">event</span><span style="color: #000000">.</span><span style="color: #001080">payload</span><span style="color: #000000">.</span><span style="color: #001080">count</span><span style="color: #000000">;</span>
+<span style="color: #000000">      </span><span style="color: #AF00DB">break</span><span style="color: #000000">;</span>
+
+<span style="color: #000000">    </span><span style="color: #AF00DB">default</span><span style="color: #000000">:</span>
+<span style="color: #000000">      </span><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #001080">name</span><span style="color: #000000">: </span><span style="color: #0070C1">eventName</span><span style="color: #000000"> } = </span><span style="color: #001080">event</span><span style="color: #000000">;</span>
+<span style="color: #000000">      </span><span style="color: #795E26">missingSwitchCaseHandling</span><span style="color: #000000">(</span><span style="color: #001080">eventName</span><span style="color: #000000">);</span>
+<span style="color: #000000">  }</span>
+
+<span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">outcome:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;SUCCESS&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">data:</span><span style="color: #000000"> {},</span>
+<span style="color: #000000">  };</span>
+<span style="color: #000000">}</span>
+</code></pre>
+							</dd>
+						</dl>
+					</div>
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
@@ -138,15 +182,23 @@
 						</ul>
 					</div>
 				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Outcome Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="outcome" class="tsd-anchor"></a>
 					<h3>Outcome</h3>
 					<div class="tsd-signature tsd-kind-icon">Outcome<span class="tsd-signature-symbol">:</span> <a href="interfaces/outcomesuccess.html" class="tsd-signature-type" data-tsd-kind="Interface">OutcomeSuccess</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/outcomefailure.html" class="tsd-signature-type" data-tsd-kind="Interface">OutcomeFailure</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L40">interfaces.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L201">interfaces.ts:201</a></li>
 						</ul>
 					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>It represent an operation result.</p>
+						</div>
+					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
@@ -161,9 +213,47 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/buildAggregate.ts#L10">buildAggregate.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/buildAggregate.ts#L48">buildAggregate.ts:48</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Use this function to build your aggregate instances.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>example</dt>
+									<dd><pre><code class="language-typescript"><span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">createCounter</span><span style="color: #000000">(</span>
+<span style="color: #000000">  </span><span style="color: #001080">commandId</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">,</span>
+<span style="color: #000000">  </span><span style="color: #001080">snapshot</span><span style="color: #000000">?: </span><span style="color: #267F99">CounterState</span>
+<span style="color: #000000">): </span><span style="color: #267F99">Counter</span><span style="color: #000000"> {</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">initialState</span><span style="color: #000000">: </span><span style="color: #267F99">CounterState</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">    </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;none&quot;</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">count:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">sequence:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000">,</span>
+<span style="color: #000000">    </span><span style="color: #001080">allEvents:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">    </span><span style="color: #001080">uncommitedEvents:</span><span style="color: #000000"> [],</span>
+<span style="color: #000000">    </span><span style="color: #001080">commandId:</span><span style="color: #000000"> </span><span style="color: #001080">commandId</span><span style="color: #000000">,</span>
+<span style="color: #000000">  };</span>
+
+<span style="color: #000000">  </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">snapshot</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #001080">snapshot</span><span style="color: #000000">.</span><span style="color: #001080">commandId</span><span style="color: #000000"> = </span><span style="color: #001080">commandId</span><span style="color: #000000">; </span><span style="color: #008000">// Override snapshot previous command id</span>
+<span style="color: #000000">  }</span>
+
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currentState</span><span style="color: #000000"> = </span><span style="color: #001080">snapshot</span><span style="color: #000000"> || </span><span style="color: #001080">initialState</span><span style="color: #000000">;</span>
+
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aggregate</span><span style="color: #000000"> = </span><span style="color: #795E26">buildAggregate</span><span style="color: #000000">(</span><span style="color: #001080">currentState</span><span style="color: #000000">, </span><span style="color: #001080">counterEventResolver</span><span style="color: #000000">);</span>
+
+<span style="color: #000000">  </span><span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>
+<span style="color: #000000">    </span><span style="color: #001080">init:</span><span style="color: #000000"> </span><span style="color: #795E26">buildInit</span><span style="color: #000000">(</span><span style="color: #001080">aggregate</span><span style="color: #000000">),</span>
+<span style="color: #000000">    </span><span style="color: #001080">count:</span><span style="color: #000000"> </span><span style="color: #795E26">buildCount</span><span style="color: #000000">(</span><span style="color: #001080">aggregate</span><span style="color: #000000">),</span>
+<span style="color: #000000">    </span><span style="color: #001080">reset:</span><span style="color: #000000"> </span><span style="color: #795E26">buildReset</span><span style="color: #000000">(</span><span style="color: #001080">aggregate</span><span style="color: #000000">),</span>
+<span style="color: #000000">    ...</span><span style="color: #001080">aggregate</span><span style="color: #000000">,</span>
+<span style="color: #000000">  };</span>
+<span style="color: #000000">}</span>
+</code></pre>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
@@ -177,12 +267,19 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>state: <span class="tsd-signature-type">S</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The current state of you aggregate</p>
+									</div>
 								</li>
 								<li>
 									<h5>resolver: <a href="modules.html#eventresolver" class="tsd-signature-type" data-tsd-kind="Type alias">EventResolver</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The EventResolver your aggregate will use to mutate the state.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="interfaces/aggregate.html" class="tsd-signature-type" data-tsd-kind="Interface">Aggregate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>This function will return an new aggregate instance.</p>
 						</li>
 					</ul>
 				</section>
@@ -199,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/missingSwitchCase.ts#L24">missingSwitchCase.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/missingSwitchCase.ts#L24">missingSwitchCase.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

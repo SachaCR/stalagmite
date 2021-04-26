@@ -63,6 +63,13 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>This is the aggregate interface</p>
+					</div>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
@@ -113,13 +120,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L3">interfaces.ts:3</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L16">interfaces.ts:16</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>events: <span class="tsd-signature-type">E</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event you want to apply and add to the list of events that are not commited yet.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../modules.html#outcome" class="tsd-signature-type" data-tsd-kind="Type alias">Outcome</a></h4>
@@ -136,13 +146,16 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L2">interfaces.ts:2</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L10">interfaces.ts:10</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>events: <a href="event.html" class="tsd-signature-type" data-tsd-kind="Interface">Event</a><span class="tsd-signature-symbol"> | </span><a href="event.html" class="tsd-signature-type" data-tsd-kind="Interface">Event</a><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>The event you want to apply to the current state. This function is used when you want to rehydrate your aggregate from your events store events.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../modules.html#outcome" class="tsd-signature-type" data-tsd-kind="Type alias">Outcome</a></h4>
@@ -159,9 +172,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L4">interfaces.ts:4</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L21">interfaces.ts:21</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Call this function clear the uncommmited events array after you saved them in your event store / repository.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 						</li>
 					</ul>
@@ -176,10 +194,11 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L8">interfaces.ts:8</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L36">interfaces.ts:36</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>All events that leds to the current state of you aggregate.</p>
 						</li>
 					</ul>
 				</section>
@@ -193,10 +212,11 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L6">interfaces.ts:6</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L26">interfaces.ts:26</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
+							<p>The current sequence of you aggregate.</p>
 						</li>
 					</ul>
 				</section>
@@ -210,10 +230,11 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L7">interfaces.ts:7</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L31">interfaces.ts:31</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>The list of events you added that need to be persisted in your event store. Call eventsCommited() when it&#39;s done to clear the array.</p>
 						</li>
 					</ul>
 				</section>
@@ -227,10 +248,11 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/e452b00/src/interfaces.ts#L9">interfaces.ts:9</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/04f223c/src/interfaces.ts#L41">interfaces.ts:41</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">S</span></h4>
+							<p>The current state of you aggregate. Beware it&#39;s not a deep copy so if you mutate it. It will impact your aggregate state. It should never be used outside of you aggregate boundaries.</p>
 						</li>
 					</ul>
 				</section>
