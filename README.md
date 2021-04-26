@@ -188,8 +188,3 @@ export async function counterNumberHandler(
 }
 ```
 
-# TODO
-
-- [ ] Finish tests
-- [ ] Improve README.md with more details and explanations
-- [ ] Complete typedoc
