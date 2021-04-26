@@ -8,9 +8,9 @@ Stalagmite is a library that helps you building event sourced aggregates.
 
 `npm install stalagmite`
 
-# Typedoc:
+# Documentation:
 
-[typedoc here](https://sachacr.github.io/stalagmite/modules.html)
+[Access documentation here with examples](https://sachacr.github.io/stalagmite/modules.html)
 
 # Example:
 
