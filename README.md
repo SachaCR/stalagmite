@@ -1,4 +1,4 @@
-# stalagmite
+# Stalagmite
 
 Stalagmite is a library that helps you building event sourced aggregates.
 
@@ -98,7 +98,7 @@ function eventResolver(state: CounterState, event: CounterEvents): Outcome {
 }
 ```
 
-# Declare you events :
+## Declare your events :
 
 ```typescript
 export interface CounterInitiated extends Event {
@@ -127,7 +127,7 @@ export interface CounterReseted extends Event {
 }
 ```
 
-# Implement counter busines logic:
+## Implement counter busines logic:
 
 ```typescript
 export function buildCount(aggregate: Aggregate<CounterState, CounterEvents>) {
@@ -156,7 +156,7 @@ export function buildCount(aggregate: Aggregate<CounterState, CounterEvents>) {
 }
 ```
 
-# Command handler example:
+## Command handler example:
 
 ```typescript
 export async function counterNumberHandler(
