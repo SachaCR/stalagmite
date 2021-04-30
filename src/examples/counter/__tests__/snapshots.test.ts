@@ -1,7 +1,7 @@
-import { CounterState, createCounter } from "..";
+import { createCounter } from "..";
 
-describe("snapshots()", () => {
-  describe("Given a counter ", () => {
+describe("snapshot()", () => {
+  describe("Given a counter", () => {
     const counter = createCounter("commandId");
     counter.init("counter-id", 4);
     counter.count(12);
