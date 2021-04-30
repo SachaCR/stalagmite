@@ -20,6 +20,14 @@
     "version": "npm run build",
     "postversion": "git push && git push --tags"
   },
+  "keywords": [
+    "event-sourcing",
+    "ES",
+    "CQRS",
+    "DDD",
+    "aggregate",
+    "event"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/SachaCR/stalagmite.git"
