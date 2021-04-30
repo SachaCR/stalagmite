@@ -1,6 +1,6 @@
 {
   "name": "stalagmite",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Event sourcing library that helps you building event sourced aggregates.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,6 +22,7 @@
   },
   "keywords": [
     "event-sourcing",
+    "event sourcing",
     "ES",
     "CQRS",
     "DDD",
