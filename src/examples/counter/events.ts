@@ -1,5 +1,5 @@
 import { CounterState } from ".";
-import { Event, Outcome, EventResolver } from "../../interfaces";
+import { Event, Outcome } from "../../interfaces";
 import { missingSwitchCaseHandling } from "../../missingSwitchCase";
 
 export interface CounterInitiated extends Event {
@@ -82,7 +82,10 @@ export function counterReseted(state: CounterState): CounterReseted {
 
 export type CounterEvents = CounterInitiated | NumberCounted | CounterReseted;
 
-function eventResolver(state: CounterState, event: CounterEvents): Outcome {
+export function counterEventResolver(
+  state: CounterState,
+  event: CounterEvents
+): Outcome {
   switch (event.name) {
     case "CounterInitiated":
       state.id = event.payload.counterId;
@@ -107,8 +110,3 @@ function eventResolver(state: CounterState, event: CounterEvents): Outcome {
     data: {},
   };
 }
-
-export const counterEventResolver: EventResolver<
-  CounterState,
-  CounterEvents
-> = eventResolver;

@@ -24,33 +24,21 @@ describe("init()", () => {
           sequence: 1,
           commandId: "command-id",
           count: 5,
-          uncommitedEvents: [
-            {
-              commandId: "command-id",
-              entityId: "counter-id",
-              name: "CounterInitiated",
-              payload: {
-                count: 5,
-                counterId: "counter-id",
-              },
-              sequence: 1,
-              version: 1,
-            },
-          ],
-          allEvents: [
-            {
-              commandId: "command-id",
-              entityId: "counter-id",
-              name: "CounterInitiated",
-              payload: {
-                count: 5,
-                counterId: "counter-id",
-              },
-              sequence: 1,
-              version: 1,
-            },
-          ],
         });
+
+        expect(counter.getUncommmitedEvents()).toStrictEqual([
+          {
+            name: "CounterInitiated",
+            version: 1,
+            commandId: "command-id",
+            entityId: "counter-id",
+            sequence: 1,
+            payload: {
+              count: 5,
+              counterId: "counter-id",
+            },
+          },
+        ]);
       });
     });
   });
