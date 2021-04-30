@@ -12,6 +12,7 @@
     "typecheck": "tsc --noEmit",
     "doc": "typedoc --options typedoc.json",
     "test": "jest",
+    "test:watch": "jest --watch",
     "all": "npm run typecheck && npm run build && npm test && npm run doc",
     "open:doc": "open docs/index.html",
     "open:coverage": "open coverage/lcov-report/index.html",
