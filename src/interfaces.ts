@@ -1,8 +1,16 @@
 /**
  * This is the aggregate interface
  * @category Aggregate
+ * @example
+ * ```typescript
+ * export interface Counter extends Aggregate<CounterState, CounterEvents> {
+ *   init(counterId: string, initialCount: number): Outcome;
+ *   count(number: number): Outcome;
+ *   reset(): Outcome;
+ * }
+ * ```
  */
-export interface Aggregate<S extends AggregateState<E>, E extends Event> {
+export interface Aggregate<S extends AggregateState, E extends Event> {
   /**
    *
    * @param events The event you want to apply to the current state. This function is used when you want to rehydrate your aggregate from your events store events.
@@ -31,14 +39,24 @@ export interface Aggregate<S extends AggregateState<E>, E extends Event> {
   getUncommmitedEvents(): E[];
 
   /**
-   * @returns All events that leds to the current state of you aggregate.
-   */
-  getAllEvents(): E[];
-
-  /**
    * @returns The current state of you aggregate. Beware it's not a deep copy so if you mutate it. It will impact your aggregate state. It should never be used outside of you aggregate boundaries.
    */
   state(): S;
+
+  /**
+   * @return a snapshot (deep copy) of the current state.
+   */
+  snapshot(): S;
+
+  /**
+   * @return All snapshots.
+   */
+  getSnapshot(): S[];
+
+  /**
+   * @return Empty the snapshots array
+   */
+  snapshotsCommited(): void;
 }
 
 /**
@@ -46,13 +64,13 @@ export interface Aggregate<S extends AggregateState<E>, E extends Event> {
  * @category Aggregate
  * @example
  * ```typescript
- * interface CounterState extends AggregateState<CounterEvents> {
+ * interface CounterState extends AggregateState {
  *   id: string;
  *   count: number;
  * }
  * ```
  */
-export interface AggregateState<E extends Event> {
+export interface AggregateState {
   /**
    * This is history revision of the aggregate.
    */
@@ -62,16 +80,6 @@ export interface AggregateState<E extends Event> {
    * The command id related to this sequence.
    */
   commandId: string;
-
-  /**
-   * All the events that has generate the current state.
-   */
-  allEvents: E[];
-
-  /**
-   * All the events that your current operations on the aggregate has generated that need to be persisted in your event store / repository.
-   */
-  uncommitedEvents: E[];
 }
 
 /**
@@ -189,7 +197,7 @@ export interface Command {
  * }
  * ```
  */
-export type EventResolver<S extends AggregateState<E>, E extends Event> = (
+export type EventResolver<S extends AggregateState, E extends Event> = (
   state: S,
   event: E
 ) => Outcome;
@@ -216,7 +224,7 @@ export type Outcome = OutcomeSuccess | OutcomeFailure;
  * ```
  */
 export interface OutcomeFailure {
-  outcome: 'FAILURE';
+  outcome: "FAILURE";
   /**
    * It's a specific error code relative to the error.
    */
@@ -237,7 +245,7 @@ export interface OutcomeFailure {
  * @category Outcome
  */
 export interface OutcomeSuccess {
-  outcome: 'SUCCESS';
+  outcome: "SUCCESS";
   /**
    * It's the result of the operation.
    * It can be anything you wants.

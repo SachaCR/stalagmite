@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Aggregate | Stalagmite - v0.0.6</title>
-	<meta name="description" content="Documentation for Stalagmite - v0.0.6">
+	<title>Aggregate | Stalagmite - v0.0.7</title>
+	<meta name="description" content="Documentation for Stalagmite - v0.0.7">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 	<script async src="../assets/js/search.js" id="search-script"></script>
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">Stalagmite - v0.0.6</a>
+					<a href="../index.html" class="title">Stalagmite - v0.0.7</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -50,7 +50,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../modules.html">Stalagmite - v0.0.6</a>
+					<a href="../modules.html">Stalagmite - v0.0.7</a>
 				</li>
 				<li>
 					<a href="aggregate.html">Aggregate</a>
@@ -68,13 +68,23 @@
 					<div class="lead">
 						<p>This is the aggregate interface</p>
 					</div>
+					<dl class="tsd-comment-tags">
+						<dt>example</dt>
+						<dd><pre><code class="language-typescript"><span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">interface</span><span style="color: #000000"> </span><span style="color: #267F99">Counter</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Aggregate</span><span style="color: #000000">&lt;</span><span style="color: #267F99">CounterState</span><span style="color: #000000">, </span><span style="color: #267F99">CounterEvents</span><span style="color: #000000">&gt; {</span>
+<span style="color: #000000">  </span><span style="color: #795E26">init</span><span style="color: #000000">(</span><span style="color: #001080">counterId</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">, </span><span style="color: #001080">initialCount</span><span style="color: #000000">: </span><span style="color: #267F99">number</span><span style="color: #000000">): </span><span style="color: #267F99">Outcome</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #795E26">count</span><span style="color: #000000">(</span><span style="color: #001080">number</span><span style="color: #000000">: </span><span style="color: #267F99">number</span><span style="color: #000000">): </span><span style="color: #267F99">Outcome</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #795E26">reset</span><span style="color: #000000">(): </span><span style="color: #267F99">Outcome</span><span style="color: #000000">;</span>
+<span style="color: #000000">}</span>
+</code></pre>
+						</dd>
+					</dl>
 				</div>
 			</section>
 			<section class="tsd-panel tsd-type-parameters">
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>S<span class="tsd-signature-symbol">: </span><a href="aggregatestate.html" class="tsd-signature-type" data-tsd-kind="Interface">AggregateState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						<h4>S<span class="tsd-signature-symbol">: </span><a href="aggregatestate.html" class="tsd-signature-type" data-tsd-kind="Interface">AggregateState</a></h4>
 					</li>
 					<li>
 						<h4>E<span class="tsd-signature-symbol">: </span><a href="event.html" class="tsd-signature-type" data-tsd-kind="Interface">Event</a></h4>
@@ -99,9 +109,11 @@
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#addevent" class="tsd-kind-icon">add<wbr>Event</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#apply" class="tsd-kind-icon">apply</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#eventscommited" class="tsd-kind-icon">events<wbr>Commited</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#getallevents" class="tsd-kind-icon">get<wbr>All<wbr>Events</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#getsequence" class="tsd-kind-icon">get<wbr>Sequence</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#getsnapshot" class="tsd-kind-icon">get<wbr>Snapshot</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#getuncommmitedevents" class="tsd-kind-icon">get<wbr>Uncommmited<wbr>Events</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#snapshot" class="tsd-kind-icon">snapshot</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#snapshotscommited" class="tsd-kind-icon">snapshots<wbr>Commited</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="aggregate.html#state" class="tsd-kind-icon">state</a></li>
 							</ul>
 						</section>
@@ -120,7 +132,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/interfaces.ts#L16">interfaces.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L24">interfaces.ts:24</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -146,7 +158,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/interfaces.ts#L10">interfaces.ts:10</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L18">interfaces.ts:18</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -172,7 +184,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/interfaces.ts#L21">interfaces.ts:21</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L29">interfaces.ts:29</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -181,24 +193,6 @@
 								</div>
 							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="getallevents" class="tsd-anchor"></a>
-					<h3>get<wbr>All<wbr>Events</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>All<wbr>Events<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">[]</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/interfaces.ts#L36">interfaces.ts:36</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">[]</span></h4>
-							<p>All events that leds to the current state of you aggregate.</p>
 						</li>
 					</ul>
 				</section>
@@ -212,11 +206,29 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/interfaces.ts#L26">interfaces.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L34">interfaces.ts:34</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
 							<p>The current sequence of you aggregate.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="getsnapshot" class="tsd-anchor"></a>
+					<h3>get<wbr>Snapshot</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Snapshot<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L54">interfaces.ts:54</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>All snapshots.</p>
 						</li>
 					</ul>
 				</section>
@@ -230,11 +242,47 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/interfaces.ts#L31">interfaces.ts:31</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L39">interfaces.ts:39</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">[]</span></h4>
 							<p>The list of events you added that need to be persisted in your event store. Call eventsCommited() when it&#39;s done to clear the array.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="snapshot" class="tsd-anchor"></a>
+					<h3>snapshot</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">snapshot<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L49">interfaces.ts:49</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">S</span></h4>
+							<p>a snapshot (deep copy) of the current state.</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="snapshotscommited" class="tsd-anchor"></a>
+					<h3>snapshots<wbr>Commited</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">snapshots<wbr>Commited<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L59">interfaces.ts:59</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<p>Empty the snapshots array</p>
 						</li>
 					</ul>
 				</section>
@@ -248,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/interfaces.ts#L41">interfaces.ts:41</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L44">interfaces.ts:44</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">S</span></h4>
@@ -283,13 +331,19 @@
 								<a href="aggregate.html#eventscommited" class="tsd-kind-icon">events<wbr>Commited</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="aggregate.html#getallevents" class="tsd-kind-icon">get<wbr>All<wbr>Events</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="aggregate.html#getsequence" class="tsd-kind-icon">get<wbr>Sequence</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="aggregate.html#getsnapshot" class="tsd-kind-icon">get<wbr>Snapshot</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="aggregate.html#getuncommmitedevents" class="tsd-kind-icon">get<wbr>Uncommmited<wbr>Events</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="aggregate.html#snapshot" class="tsd-kind-icon">snapshot</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="aggregate.html#snapshotscommited" class="tsd-kind-icon">snapshots<wbr>Commited</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-interface">
 								<a href="aggregate.html#state" class="tsd-kind-icon">state</a>
@@ -298,7 +352,7 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
+					<li class=" tsd-kind-interface">
 						<a href="aggregatestate.html" class="tsd-kind-icon">Aggregate<wbr>State</a>
 					</li>
 					<li class=" tsd-kind-interface">

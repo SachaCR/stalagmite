@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Stalagmite - v0.0.6</title>
-	<meta name="description" content="Documentation for Stalagmite - v0.0.6">
+	<title>Stalagmite - v0.0.7</title>
+	<meta name="description" content="Documentation for Stalagmite - v0.0.7">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 	<script async src="assets/js/search.js" id="search-script"></script>
@@ -23,7 +23,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="index.html" class="title">Stalagmite - v0.0.6</a>
+					<a href="index.html" class="title">Stalagmite - v0.0.7</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -48,7 +48,7 @@
 	</div>
 	<div class="tsd-page-title">
 		<div class="container">
-			<h1>Stalagmite - v0.0.6</h1>
+			<h1>Stalagmite - v0.0.7</h1>
 		</div>
 	</div>
 </header>
@@ -63,7 +63,7 @@
 							<h3>Aggregate Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/aggregate.html" class="tsd-kind-icon">Aggregate</a></li>
-								<li class="tsd-kind-interface tsd-has-type-parameter"><a href="interfaces/aggregatestate.html" class="tsd-kind-icon">Aggregate<wbr>State</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/aggregatestate.html" class="tsd-kind-icon">Aggregate<wbr>State</a></li>
 							</ul>
 							<h3>Commands Interfaces</h3>
 							<ul class="tsd-index-list">
@@ -110,7 +110,7 @@
 					<div class="tsd-signature tsd-kind-icon">Event<wbr>Resolver&lt;S, E&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="modules.html#outcome" class="tsd-signature-type" data-tsd-kind="Type alias">Outcome</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/interfaces.ts#L192">interfaces.ts:192</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L200">interfaces.ts:200</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -151,7 +151,7 @@
 					<h4 class="tsd-type-parameters-title">Type parameters</h4>
 					<ul class="tsd-type-parameters">
 						<li>
-							<h4>S<span class="tsd-signature-symbol">: </span><a href="interfaces/aggregatestate.html" class="tsd-signature-type" data-tsd-kind="Interface">AggregateState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4>S<span class="tsd-signature-symbol">: </span><a href="interfaces/aggregatestate.html" class="tsd-signature-type" data-tsd-kind="Interface">AggregateState</a></h4>
 						</li>
 						<li>
 							<h4>E<span class="tsd-signature-symbol">: </span><a href="interfaces/event.html" class="tsd-signature-type" data-tsd-kind="Interface">Event</a></h4>
@@ -191,7 +191,7 @@
 					<div class="tsd-signature tsd-kind-icon">Outcome<span class="tsd-signature-symbol">:</span> <a href="interfaces/outcomesuccess.html" class="tsd-signature-type" data-tsd-kind="Interface">OutcomeSuccess</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/outcomefailure.html" class="tsd-signature-type" data-tsd-kind="Interface">OutcomeFailure</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/interfaces.ts#L201">interfaces.ts:201</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/interfaces.ts#L209">interfaces.ts:209</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -207,13 +207,13 @@
 					<a name="buildaggregate" class="tsd-anchor"></a>
 					<h3>build<wbr>Aggregate</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">build<wbr>Aggregate&lt;S, E&gt;<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span>, resolver<span class="tsd-signature-symbol">: </span><a href="modules.html#eventresolver" class="tsd-signature-type" data-tsd-kind="Type alias">EventResolver</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/aggregate.html" class="tsd-signature-type" data-tsd-kind="Interface">Aggregate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Aggregate&lt;S, E&gt;<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span>, resolver<span class="tsd-signature-symbol">: </span><a href="modules.html#eventresolver" class="tsd-signature-type" data-tsd-kind="Type alias">EventResolver</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>snapshotEvery<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/aggregate.html" class="tsd-signature-type" data-tsd-kind="Interface">Aggregate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/buildAggregate.ts#L48">buildAggregate.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/buildAggregate.ts#L56">buildAggregate.ts:56</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -224,22 +224,20 @@
 									<dt>example</dt>
 									<dd><pre><code class="language-typescript"><span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">createCounter</span><span style="color: #000000">(</span>
 <span style="color: #000000">  </span><span style="color: #001080">commandId</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">snapshot</span><span style="color: #000000">?: </span><span style="color: #267F99">CounterState</span>
+<span style="color: #000000">  </span><span style="color: #001080">state</span><span style="color: #000000">?: </span><span style="color: #267F99">CounterState</span>
 <span style="color: #000000">): </span><span style="color: #267F99">Counter</span><span style="color: #000000"> {</span>
 <span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">initialState</span><span style="color: #000000">: </span><span style="color: #267F99">CounterState</span><span style="color: #000000"> = {</span>
 <span style="color: #000000">    </span><span style="color: #001080">id:</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;none&quot;</span><span style="color: #000000">,</span>
 <span style="color: #000000">    </span><span style="color: #001080">count:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000">,</span>
 <span style="color: #000000">    </span><span style="color: #001080">sequence:</span><span style="color: #000000"> </span><span style="color: #098658">0</span><span style="color: #000000">,</span>
-<span style="color: #000000">    </span><span style="color: #001080">allEvents:</span><span style="color: #000000"> [],</span>
-<span style="color: #000000">    </span><span style="color: #001080">uncommitedEvents:</span><span style="color: #000000"> [],</span>
 <span style="color: #000000">    </span><span style="color: #001080">commandId:</span><span style="color: #000000"> </span><span style="color: #001080">commandId</span><span style="color: #000000">,</span>
 <span style="color: #000000">  };</span>
 
-<span style="color: #000000">  </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">snapshot</span><span style="color: #000000">) {</span>
-<span style="color: #000000">    </span><span style="color: #001080">snapshot</span><span style="color: #000000">.</span><span style="color: #001080">commandId</span><span style="color: #000000"> = </span><span style="color: #001080">commandId</span><span style="color: #000000">; </span><span style="color: #008000">// Override snapshot previous command id</span>
+<span style="color: #000000">  </span><span style="color: #AF00DB">if</span><span style="color: #000000"> (</span><span style="color: #001080">state</span><span style="color: #000000">) {</span>
+<span style="color: #000000">    </span><span style="color: #001080">state</span><span style="color: #000000">.</span><span style="color: #001080">commandId</span><span style="color: #000000"> = </span><span style="color: #001080">commandId</span><span style="color: #000000">;</span>
 <span style="color: #000000">  }</span>
 
-<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currentState</span><span style="color: #000000"> = </span><span style="color: #001080">snapshot</span><span style="color: #000000"> || </span><span style="color: #001080">initialState</span><span style="color: #000000">;</span>
+<span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">currentState</span><span style="color: #000000"> = </span><span style="color: #001080">state</span><span style="color: #000000"> || </span><span style="color: #001080">initialState</span><span style="color: #000000">;</span>
 
 <span style="color: #000000">  </span><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aggregate</span><span style="color: #000000"> = </span><span style="color: #795E26">buildAggregate</span><span style="color: #000000">(</span><span style="color: #001080">currentState</span><span style="color: #000000">, </span><span style="color: #001080">counterEventResolver</span><span style="color: #000000">);</span>
 
@@ -257,7 +255,7 @@
 							<h4 class="tsd-type-parameters-title">Type parameters</h4>
 							<ul class="tsd-type-parameters">
 								<li>
-									<h4>S<span class="tsd-signature-symbol">: </span><a href="interfaces/aggregatestate.html" class="tsd-signature-type" data-tsd-kind="Interface">AggregateState</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									<h4>S<span class="tsd-signature-symbol">: </span><a href="interfaces/aggregatestate.html" class="tsd-signature-type" data-tsd-kind="Interface">AggregateState</a></h4>
 								</li>
 								<li>
 									<h4>E<span class="tsd-signature-symbol">: </span><a href="interfaces/event.html" class="tsd-signature-type" data-tsd-kind="Interface">Event</a></h4>
@@ -276,6 +274,14 @@
 									<div class="tsd-comment tsd-typography">
 										<p>The EventResolver your aggregate will use to mutate the state.</p>
 									</div>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-symbol">{ </span>snapshotEvery<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span></h5>
+									<ul class="tsd-parameters">
+										<li class="tsd-parameter">
+											<h5><span class="tsd-flag ts-flagOptional">Optional</span> snapshot<wbr>Every<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span></h5>
+										</li>
+									</ul>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="interfaces/aggregate.html" class="tsd-signature-type" data-tsd-kind="Interface">Aggregate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></h4>
@@ -296,7 +302,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/ec3985d/src/missingSwitchCase.ts#L24">missingSwitchCase.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/478e65c/src/missingSwitchCase.ts#L24">missingSwitchCase.ts:24</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -350,7 +356,7 @@
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/aggregate.html" class="tsd-kind-icon">Aggregate</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-has-type-parameter">
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/aggregatestate.html" class="tsd-kind-icon">Aggregate<wbr>State</a>
 					</li>
 					<li class=" tsd-kind-interface">

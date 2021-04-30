@@ -1,3 +1,5 @@
+import cloneDeep from "lodash.clonedeep";
+
 import {
   AggregateState,
   Aggregate,
@@ -7,6 +9,14 @@ import {
   OutcomeSuccess,
 } from "./interfaces";
 
+/**
+ * Internal type used to keep track of all events and snapshots
+ */
+interface AggregateHistory<S, E extends Event> {
+  allEvents: E[];
+  uncommitedEvents: E[];
+  snapshots: S[];
+}
 
 /**
  * Use this function to build your aggregate instances.
@@ -17,25 +27,23 @@ import {
  * ```typescript
  * export function createCounter(
  *   commandId: string,
- *   snapshot?: CounterState
+ *   state?: CounterState
  * ): Counter {
  *   const initialState: CounterState = {
  *     id: "none",
  *     count: 0,
  *     sequence: 0,
- *     allEvents: [],
- *     uncommitedEvents: [],
  *     commandId: commandId,
  *   };
- * 
- *   if (snapshot) {
- *     snapshot.commandId = commandId; // Override snapshot previous command id
+ *
+ *   if (state) {
+ *     state.commandId = commandId;
  *   }
- * 
- *   const currentState = snapshot || initialState;
- * 
+ *
+ *   const currentState = state || initialState;
+ *
  *   const aggregate = buildAggregate(currentState, counterEventResolver);
- * 
+ *
  *   return {
  *     init: buildInit(aggregate),
  *     count: buildCount(aggregate),
@@ -45,25 +53,45 @@ import {
  * }
  * ```
  */
-export function buildAggregate<S extends AggregateState<E>, E extends Event>(
+export function buildAggregate<S extends AggregateState, E extends Event>(
   state: S,
-  resolver: EventResolver<S, E>
+  resolver: EventResolver<S, E>,
+  options?: {
+    snapshotEvery?: number;
+  }
 ): Aggregate<S, E> {
+  const history: AggregateHistory<S, E> = {
+    allEvents: [],
+    uncommitedEvents: [],
+    snapshots: [],
+  };
+
   return {
-    apply: (event: E | E[]) => apply(state, event, resolver),
-    addEvent: (event: E) => addEvent(state, event, resolver),
+    apply: (event: E | E[]) => apply(state, event, resolver, history),
+    addEvent: (event: E) => addEvent(state, event, resolver, history, options),
     getSequence: () => state.sequence,
-    getAllEvents: () => state.allEvents,
-    getUncommmitedEvents: () => state.uncommitedEvents,
-    eventsCommited: () => (state.uncommitedEvents = []),
-    state: () => Object.assign({}, state), // Warning this is a not deep copy. State should never be manipulated outside aggregate boundaries.
+    getUncommmitedEvents: () => history.uncommitedEvents,
+    eventsCommited: () => (history.uncommitedEvents = []),
+    state: () => cloneDeep(state),
+    snapshot: () => {
+      const snapshot = cloneDeep(state);
+      history.snapshots.push(snapshot);
+      return snapshot;
+    },
+    getSnapshot: () => {
+      return history.snapshots;
+    },
+    snapshotsCommited: () => {
+      history.snapshots = [];
+    },
   };
 }
 
-function apply<S extends AggregateState<E>, E extends Event>(
+function apply<S extends AggregateState, E extends Event>(
   state: S,
   events: E | E[],
-  resolver: EventResolver<S, E>
+  resolver: EventResolver<S, E>,
+  history: AggregateHistory<S, E>
 ): Outcome {
   const eventList = Array.isArray(events) ? events : [events];
   const successOutcomes: OutcomeSuccess[] = [];
@@ -104,7 +132,7 @@ function apply<S extends AggregateState<E>, E extends Event>(
       };
     }
 
-    state.allEvents.push(event);
+    history.allEvents.push(event);
     state.sequence += 1;
   }
 
@@ -116,18 +144,28 @@ function apply<S extends AggregateState<E>, E extends Event>(
   };
 }
 
-function addEvent<S extends AggregateState<E>, E extends Event>(
+function addEvent<S extends AggregateState, E extends Event>(
   state: S,
   event: E,
-  resolver: EventResolver<S, E>
+  resolver: EventResolver<S, E>,
+  history: AggregateHistory<S, E>,
+  options?: {
+    snapshotEvery?: number;
+  }
 ): Outcome {
-  const result = apply(state, event, resolver);
+  const snapshotEvery = options?.snapshotEvery;
+  const result = apply(state, event, resolver, history);
 
   if (result.outcome === "FAILURE") {
     return result;
   }
 
-  state.uncommitedEvents.push(event);
+  if (snapshotEvery && state.sequence % snapshotEvery === 0) {
+    const snapshot = cloneDeep(state);
+    history.snapshots.push(snapshot);
+  }
+
+  history.uncommitedEvents.push(event);
 
   return result;
 }

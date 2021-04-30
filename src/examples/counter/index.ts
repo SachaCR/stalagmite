@@ -9,29 +9,27 @@ export interface Counter extends Aggregate<CounterState, CounterEvents> {
   reset(): Outcome;
 }
 
-export interface CounterState extends AggregateState<CounterEvents> {
+export interface CounterState extends AggregateState {
   id: string;
   count: number;
 }
 
 export function createCounter(
   commandId: string,
-  snapshot?: CounterState
+  state?: CounterState
 ): Counter {
   const initialState: CounterState = {
     id: "none",
     count: 0,
     sequence: 0,
-    allEvents: [],
-    uncommitedEvents: [],
     commandId: commandId,
   };
 
-  if (snapshot) {
-    snapshot.commandId = commandId; // Override snapshot previous command id
+  if (state) {
+    state.commandId = commandId;
   }
 
-  const currentState = snapshot || initialState;
+  const currentState = state || initialState;
 
   const aggregate = buildAggregate(currentState, counterEventResolver);
 
