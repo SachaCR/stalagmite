@@ -57,6 +57,9 @@ export function buildAggregate<S extends AggregateState, E extends Event>(
   state: S,
   resolver: EventResolver<S, E>,
   options?: {
+    /**
+     * This option will generate a snapshots every X events added.
+     */
     snapshotEvery?: number;
   }
 ): Aggregate<S, E> {

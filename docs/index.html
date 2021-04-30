@@ -96,7 +96,9 @@
 <span style="color: #000000">  </span><span style="color: #008000">/*...*/</span>
 <span style="color: #000000">}</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aggregate</span><span style="color: #000000"> = </span><span style="color: #795E26">buildAggregate</span><span style="color: #000000">(</span><span style="color: #001080">initialState</span><span style="color: #000000">, </span><span style="color: #001080">eventResolver</span><span style="color: #000000">);</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aggregate</span><span style="color: #000000"> = </span><span style="color: #795E26">buildAggregate</span><span style="color: #000000">(</span><span style="color: #001080">initialState</span><span style="color: #000000">, </span><span style="color: #001080">eventResolver</span><span style="color: #000000">, {</span>
+<span style="color: #000000">  </span><span style="color: #001080">snapshotEvery:</span><span style="color: #000000"> </span><span style="color: #098658">2</span><span style="color: #000000">, </span><span style="color: #008000">// This options will generate snapshots every 2 events added</span>
+<span style="color: #000000">});</span>
 
 <span style="color: #008000">// Expose your business methods and expose aggregate methods.</span>
 <span style="color: #AF00DB">return</span><span style="color: #000000"> {</span>

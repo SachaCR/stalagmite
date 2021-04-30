@@ -39,7 +39,9 @@ function counterEventResolver( // It's this function that mutate the state when 
   /*...*/
 }
 
-const aggregate = buildAggregate(initialState, eventResolver);
+const aggregate = buildAggregate(initialState, eventResolver, {
+  snapshotEvery: 2, // This options will generate snapshots every 2 events added
+});
 
 // Expose your business methods and expose aggregate methods.
 return {
