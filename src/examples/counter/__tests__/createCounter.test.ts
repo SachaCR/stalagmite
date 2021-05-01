@@ -14,6 +14,8 @@ describe("createCounter()", () => {
             sequence: 0,
             count: 0,
           });
+
+          expect(counter.getSequence()).toStrictEqual(0);
         });
       });
 

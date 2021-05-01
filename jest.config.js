@@ -9,7 +9,12 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: ["src/**/*.ts"],
   coverageDirectory: "coverage",
-  coveragePathIgnorePatterns: ["/node_modules/", "__tests__", "examples"],
+  coveragePathIgnorePatterns: [
+    "/node_modules/",
+    "__tests__",
+    "examples",
+    "/src/missingSwitchCase.ts",
+  ],
   coverageProvider: "v8",
   coverageReporters: ["text-summary", "lcov"],
   preset: "ts-jest",
