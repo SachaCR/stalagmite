@@ -4,7 +4,7 @@ Stalagmite is a library that helps you building event sourced aggregates.
 
 # Installation:
 
-[npm page](https://www.npmjs.com/package/stalagmite)
+[![https://nodei.co/npm/stalagmite.png?downloads=true&downloadRank=true&stars=true](https://nodei.co/npm/stalagmite.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/stalagmite)
 
 `npm install stalagmite`
 
