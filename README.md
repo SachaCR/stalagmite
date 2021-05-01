@@ -1,5 +1,7 @@
 # Stalagmite
 
+![test](https://github.com/github/docs/actions/workflows/test.yml/badge.svg)
+
 Stalagmite is a library that helps you building event sourced aggregates.
 
 # Installation:
