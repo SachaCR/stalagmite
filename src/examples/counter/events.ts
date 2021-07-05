@@ -1,9 +1,9 @@
-import { CounterState } from ".";
-import { Event, Outcome } from "../../interfaces";
-import { missingSwitchCaseHandling } from "../../missingSwitchCase";
+import { CounterState } from '.';
+import { Event, Outcome } from '../../interfaces';
+import { missingSwitchCaseHandling } from '../../missingSwitchCase';
 
 export interface CounterInitiated extends Event {
-  name: "CounterInitiated";
+  name: 'CounterInitiated';
   version: 1;
   payload: {
     counterId: string;
@@ -12,16 +12,18 @@ export interface CounterInitiated extends Event {
 }
 
 export function counterInitiated(
+  commandId: string,
   state: CounterState,
   counterId: string,
-  count: number
+  count: number,
 ): CounterInitiated {
   const event: CounterInitiated = {
-    name: "CounterInitiated",
+    name: 'CounterInitiated',
     version: 1,
     entityId: counterId,
-    commandId: state.commandId,
+    commandId: commandId,
     sequence: state.sequence + 1,
+    metadata: {},
     payload: {
       counterId: counterId,
       count: count,
@@ -32,7 +34,7 @@ export function counterInitiated(
 }
 
 export interface NumberCounted extends Event {
-  name: "NumberCounted";
+  name: 'NumberCounted';
   version: 1;
   payload: {
     number: number;
@@ -40,15 +42,17 @@ export interface NumberCounted extends Event {
 }
 
 export function numberCounted(
+  commandId: string,
   state: CounterState,
-  number: number
+  number: number,
 ): NumberCounted {
   const event: NumberCounted = {
-    name: "NumberCounted",
+    name: 'NumberCounted',
     version: 1,
     entityId: state.id,
-    commandId: state.commandId,
+    commandId: commandId,
     sequence: state.sequence + 1,
+    metadata: {},
     payload: {
       number: number,
     },
@@ -58,20 +62,24 @@ export function numberCounted(
 }
 
 export interface CounterReseted extends Event {
-  name: "CounterReseted";
+  name: 'CounterReseted';
   version: 1;
   payload: {
     count: number;
   };
 }
 
-export function counterReseted(state: CounterState): CounterReseted {
+export function counterReseted(
+  commandId: string,
+  state: CounterState,
+): CounterReseted {
   const event: CounterReseted = {
-    name: "CounterReseted",
+    name: 'CounterReseted',
     version: 1,
     entityId: state.id,
-    commandId: state.commandId,
+    commandId: commandId,
     sequence: state.sequence + 1,
+    metadata: {},
     payload: {
       count: 0,
     },
@@ -84,19 +92,19 @@ export type CounterEvents = CounterInitiated | NumberCounted | CounterReseted;
 
 export function counterEventResolver(
   state: CounterState,
-  event: CounterEvents
+  event: CounterEvents,
 ): Outcome {
   switch (event.name) {
-    case "CounterInitiated":
+    case 'CounterInitiated':
       state.id = event.payload.counterId;
       state.count = event.payload.count;
       break;
 
-    case "NumberCounted":
+    case 'NumberCounted':
       state.count += event.payload.number;
       break;
 
-    case "CounterReseted":
+    case 'CounterReseted':
       state.count = event.payload.count;
       break;
 
@@ -106,7 +114,7 @@ export function counterEventResolver(
   }
 
   return {
-    outcome: "SUCCESS",
+    outcome: 'SUCCESS',
     data: {},
   };
 }

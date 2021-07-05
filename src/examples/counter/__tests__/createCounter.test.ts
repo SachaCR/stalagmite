@@ -1,16 +1,15 @@
-import { CounterState, createCounter } from "..";
+import { CounterState, createCounter } from '..';
 
-describe("createCounter()", () => {
-  describe("Given a CreateCounter command id", () => {
-    describe("When I create a counter for this command id", () => {
-      describe("With no initial state", () => {
-        it("Then it returns a counter in initial state version 0", () => {
-          const commandId = "command-id";
+describe('createCounter()', () => {
+  describe('Given a CreateCounter command id', () => {
+    describe('When I create a counter for this command id', () => {
+      describe('With no initial state', () => {
+        it('Then it returns a counter in initial state version 0', () => {
+          const commandId = 'command-id';
           const counter = createCounter(commandId);
 
           expect(counter.state()).toStrictEqual({
-            commandId: "command-id",
-            id: "none",
+            id: 'none',
             sequence: 0,
             count: 0,
           });
@@ -19,13 +18,12 @@ describe("createCounter()", () => {
         });
       });
 
-      describe("With an initial state", () => {
-        it("Then it returns a counter in the initial state", () => {
-          const commandId = "current-command-id";
+      describe('With an initial state', () => {
+        it('Then it returns a counter in the initial state', () => {
+          const commandId = 'current-command-id';
 
           const initialState: CounterState = {
-            id: "counter-id-1",
-            commandId: "previous-command-id",
+            id: 'counter-id-1',
             count: 12,
             sequence: 1,
           };
@@ -33,8 +31,7 @@ describe("createCounter()", () => {
           const counter = createCounter(commandId, initialState);
 
           expect(counter.state()).toStrictEqual({
-            commandId: "current-command-id",
-            id: "counter-id-1",
+            id: 'counter-id-1',
             sequence: 1,
             count: 12,
           });

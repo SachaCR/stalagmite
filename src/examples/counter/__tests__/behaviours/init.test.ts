@@ -15,7 +15,6 @@ describe('init()', () => {
         expect(counter.state()).toStrictEqual({
           id: 'counter-id',
           sequence: 1,
-          commandId: 'command-id',
           count: 5,
         });
 
@@ -26,6 +25,7 @@ describe('init()', () => {
             commandId: 'command-id',
             entityId: 'counter-id',
             sequence: 1,
+            metadata: {},
             payload: {
               count: 5,
               counterId: 'counter-id',
