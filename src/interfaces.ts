@@ -1,3 +1,5 @@
+import { ApplyEventOutcome } from './buildAggregate';
+
 /**
  * This is the aggregate interface
  * @category Aggregate
@@ -15,7 +17,7 @@ export interface Aggregate<S extends AggregateState, E extends Event> {
    *
    * @param events The event you want to apply to the current state. This function is used when you want to rehydrate your aggregate from your events store events.
    */
-  apply(events: Event | Event[]): Outcome;
+  apply(events: Event | Event[]): ApplyEventOutcome;
 
   /**
    *
@@ -199,7 +201,7 @@ export interface Command {
  */
 export type EventResolver<S extends AggregateState, E extends Event> = (
   state: S,
-  event: E
+  event: E,
 ) => Outcome;
 
 /**
@@ -224,7 +226,7 @@ export type Outcome = OutcomeSuccess | OutcomeFailure;
  * ```
  */
 export interface OutcomeFailure {
-  outcome: "FAILURE";
+  outcome: 'FAILURE';
   /**
    * It's a specific error code relative to the error.
    */
@@ -245,7 +247,7 @@ export interface OutcomeFailure {
  * @category Outcome
  */
 export interface OutcomeSuccess {
-  outcome: "SUCCESS";
+  outcome: 'SUCCESS';
   /**
    * It's the result of the operation.
    * It can be anything you wants.

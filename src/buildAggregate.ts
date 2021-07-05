@@ -1,4 +1,4 @@
-import cloneDeep from "lodash.clonedeep";
+import cloneDeep from 'lodash.clonedeep';
 
 import {
   AggregateState,
@@ -7,7 +7,8 @@ import {
   EventResolver,
   Outcome,
   OutcomeSuccess,
-} from "./interfaces";
+  OutcomeFailure,
+} from './interfaces';
 
 /**
  * Internal type used to keep track of all events and snapshots
@@ -61,7 +62,7 @@ export function buildAggregate<S extends AggregateState, E extends Event>(
      * This option will generate a snapshots every X events added.
      */
     snapshotEvery?: number;
-  }
+  },
 ): Aggregate<S, E> {
   const history: AggregateHistory<S, E> = {
     allEvents: [],
@@ -90,12 +91,18 @@ export function buildAggregate<S extends AggregateState, E extends Event>(
   };
 }
 
+interface ApplyEventOutcomeSuccess extends OutcomeSuccess {
+  data: OutcomeSuccess[];
+}
+
+export type ApplyEventOutcome = ApplyEventOutcomeSuccess | OutcomeFailure;
+
 function apply<S extends AggregateState, E extends Event>(
   state: S,
   events: E | E[],
   resolver: EventResolver<S, E>,
-  history: AggregateHistory<S, E>
-): Outcome {
+  history: AggregateHistory<S, E>,
+): ApplyEventOutcome {
   const eventList = Array.isArray(events) ? events : [events];
   const successOutcomes: OutcomeSuccess[] = [];
 
@@ -104,9 +111,9 @@ function apply<S extends AggregateState, E extends Event>(
 
     if (event.sequence !== state.sequence + 1) {
       return {
-        outcome: "FAILURE",
-        errorCode: "APPLY_EVENT_FAILED",
-        reason: "Incoherent sequence",
+        outcome: 'FAILURE',
+        errorCode: 'APPLY_EVENT_FAILED',
+        reason: 'Incoherent sequence',
         data: {
           event: event,
           stateSequence: state.sequence,
@@ -117,16 +124,16 @@ function apply<S extends AggregateState, E extends Event>(
     try {
       const result = resolver(state, event);
 
-      if (result.outcome === "FAILURE") {
+      if (result.outcome === 'FAILURE') {
         return result;
       }
 
       successOutcomes.push(result);
     } catch (error) {
       return {
-        outcome: "FAILURE",
-        errorCode: "APPLY_EVENT_FAILED",
-        reason: "Resolver thrown an error",
+        outcome: 'FAILURE',
+        errorCode: 'APPLY_EVENT_FAILED',
+        reason: 'Resolver thrown an error',
         data: {
           error: error.name,
           message: error.message,
@@ -140,10 +147,8 @@ function apply<S extends AggregateState, E extends Event>(
   }
 
   return {
-    outcome: "SUCCESS",
-    data: {
-      results: successOutcomes,
-    },
+    outcome: 'SUCCESS',
+    data: successOutcomes,
   };
 }
 
@@ -154,13 +159,13 @@ function addEvent<S extends AggregateState, E extends Event>(
   history: AggregateHistory<S, E>,
   options?: {
     snapshotEvery?: number;
-  }
+  },
 ): Outcome {
   const snapshotEvery = options?.snapshotEvery;
-  const result = apply(state, event, resolver, history);
+  const results = apply(state, event, resolver, history);
 
-  if (result.outcome === "FAILURE") {
-    return result;
+  if (results.outcome === 'FAILURE') {
+    return results;
   }
 
   if (snapshotEvery && state.sequence % snapshotEvery === 0) {
@@ -170,5 +175,5 @@ function addEvent<S extends AggregateState, E extends Event>(
 
   history.uncommitedEvents.push(event);
 
-  return result;
+  return results.data[0];
 }
