@@ -21,7 +21,7 @@ In this example we will create a simple aggregate for a counter. Find the comple
 # buildAggregate()
 
 ```typescript
-import { buildAggregate, Aggregate, AggregateState } from "stalagmite";
+import { buildAggregate, Aggregate, AggregateState } from 'stalagmite';
 
 export interface Counter extends Aggregate<CounterState, CounterEvents> {
   init(counterId: string, initialCount: number): Outcome;
@@ -36,12 +36,14 @@ export interface CounterState extends AggregateState {
 
 function counterEventResolver( // It's this function that mutate the state when applying an event.
   state: CounterState,
-  event: CounterEvents
+  event: CounterEvents,
 ): Outcome {
   /*...*/
 }
 
-const aggregate = buildAggregate(initialState, eventResolver, {
+const commandId = 'command-id'; // The command you are building the aggregate for.
+
+const aggregate = buildAggregate(commandId, initialState, eventResolver, {
   snapshotEvery: 2, // This options will generate snapshots every 2 events added
 });
 
@@ -66,7 +68,7 @@ To see an eventResolver example [click here](https://github.com/SachaCR/stalagmi
 
 ```typescript
 // Aggregate interface
-aggregate.apply(events: Event | Event[]): Outcome; // Apply an event to the aggregate.
+aggregate.apply(events: Event | Event[]): ApplyEventOutcome; // Apply an event to the aggregate.
 
 aggregate.addEvent(events: E): Outcome; // Add and apply a new event to the aggregate.
 aggregate.getUncommmitedEvents(): E[]; // Returns new events created not commited yet.

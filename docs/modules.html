@@ -73,6 +73,10 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface"><a href="interfaces/event.html" class="tsd-kind-icon">Event</a></li>
 							</ul>
+							<h3>Other Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface"><a href="interfaces/applyeventoutcomesuccess.html" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome<wbr>Success</a></li>
+							</ul>
 							<h3>Outcome Interfaces</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-interface"><a href="interfaces/outcomefailure.html" class="tsd-kind-icon">Outcome<wbr>Failure</a></li>
@@ -83,6 +87,10 @@
 							<h3>Events Type aliases</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-type-alias tsd-has-type-parameter"><a href="modules.html#eventresolver" class="tsd-kind-icon">Event<wbr>Resolver</a></li>
+							</ul>
+							<h3>Other Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias"><a href="modules.html#applyeventoutcome" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome</a></li>
 							</ul>
 							<h3>Outcome Type aliases</h3>
 							<ul class="tsd-index-list">
@@ -110,7 +118,7 @@
 					<div class="tsd-signature tsd-kind-icon">Event<wbr>Resolver&lt;S, E&gt;<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span>, event<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><a href="modules.html#outcome" class="tsd-signature-type" data-tsd-kind="Type alias">Outcome</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/1eec4c4/src/interfaces.ts#L200">interfaces.ts:200</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/interfaces.ts#L212">interfaces.ts:212</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -184,6 +192,19 @@
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Other Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias">
+					<a name="applyeventoutcome" class="tsd-anchor"></a>
+					<h3>Apply<wbr>Event<wbr>Outcome</h3>
+					<div class="tsd-signature tsd-kind-icon">Apply<wbr>Event<wbr>Outcome<span class="tsd-signature-symbol">:</span> <a href="interfaces/applyeventoutcomesuccess.html" class="tsd-signature-type" data-tsd-kind="Interface">ApplyEventOutcomeSuccess</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/outcomefailure.html" class="tsd-signature-type" data-tsd-kind="Interface">OutcomeFailure</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/buildAggregate.ts#L103">buildAggregate.ts:103</a></li>
+						</ul>
+					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Outcome Type aliases</h2>
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="outcome" class="tsd-anchor"></a>
@@ -191,7 +212,7 @@
 					<div class="tsd-signature tsd-kind-icon">Outcome<span class="tsd-signature-symbol">:</span> <a href="interfaces/outcomesuccess.html" class="tsd-signature-type" data-tsd-kind="Interface">OutcomeSuccess</a><span class="tsd-signature-symbol"> | </span><a href="interfaces/outcomefailure.html" class="tsd-signature-type" data-tsd-kind="Interface">OutcomeFailure</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/1eec4c4/src/interfaces.ts#L209">interfaces.ts:209</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/interfaces.ts#L221">interfaces.ts:221</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -207,13 +228,13 @@
 					<a name="buildaggregate" class="tsd-anchor"></a>
 					<h3>build<wbr>Aggregate</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
-						<li class="tsd-signature tsd-kind-icon">build<wbr>Aggregate&lt;S, E&gt;<span class="tsd-signature-symbol">(</span>state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span>, resolver<span class="tsd-signature-symbol">: </span><a href="modules.html#eventresolver" class="tsd-signature-type" data-tsd-kind="Type alias">EventResolver</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>snapshotEvery<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/aggregate.html" class="tsd-signature-type" data-tsd-kind="Interface">Aggregate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">build<wbr>Aggregate&lt;S, E&gt;<span class="tsd-signature-symbol">(</span>commandId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, state<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">S</span>, resolver<span class="tsd-signature-symbol">: </span><a href="modules.html#eventresolver" class="tsd-signature-type" data-tsd-kind="Type alias">EventResolver</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">{ </span>snapshotEvery<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/aggregate.html" class="tsd-signature-type" data-tsd-kind="Interface">Aggregate</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">S</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">E</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/1eec4c4/src/buildAggregate.ts#L56">buildAggregate.ts:56</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/buildAggregate.ts#L57">buildAggregate.ts:57</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -264,6 +285,9 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
+									<h5>commandId: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
 									<h5>state: <span class="tsd-signature-type">S</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>The current state of you aggregate</p>
@@ -307,7 +331,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/1eec4c4/src/missingSwitchCase.ts#L26">missingSwitchCase.ts:26</a></li>
+									<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/missingSwitchCase.ts#L26">missingSwitchCase.ts:26</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -365,6 +389,9 @@
 						<a href="interfaces/aggregatestate.html" class="tsd-kind-icon">Aggregate<wbr>State</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/applyeventoutcomesuccess.html" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/command.html" class="tsd-kind-icon">Command</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -375,6 +402,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/outcomesuccess.html" class="tsd-kind-icon">Outcome<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#applyeventoutcome" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="modules.html#eventresolver" class="tsd-kind-icon">Event<wbr>Resolver</a>

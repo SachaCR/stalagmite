@@ -77,7 +77,7 @@
 				<a href="#buildaggregate" id="buildaggregate" style="color: inherit; text-decoration: none;">
 					<h1>buildAggregate()</h1>
 				</a>
-				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">buildAggregate</span><span style="color: #000000">, </span><span style="color: #001080">Aggregate</span><span style="color: #000000">, </span><span style="color: #001080">AggregateState</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;stalagmite&quot;</span><span style="color: #000000">;</span>
+				<pre><code class="language-typescript"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">buildAggregate</span><span style="color: #000000">, </span><span style="color: #001080">Aggregate</span><span style="color: #000000">, </span><span style="color: #001080">AggregateState</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;stalagmite&#039;</span><span style="color: #000000">;</span>
 
 <span style="color: #AF00DB">export</span><span style="color: #000000"> </span><span style="color: #0000FF">interface</span><span style="color: #000000"> </span><span style="color: #267F99">Counter</span><span style="color: #000000"> </span><span style="color: #0000FF">extends</span><span style="color: #000000"> </span><span style="color: #267F99">Aggregate</span><span style="color: #000000">&lt;</span><span style="color: #267F99">CounterState</span><span style="color: #000000">, </span><span style="color: #267F99">CounterEvents</span><span style="color: #000000">&gt; {</span>
 <span style="color: #000000">  </span><span style="color: #795E26">init</span><span style="color: #000000">(</span><span style="color: #001080">counterId</span><span style="color: #000000">: </span><span style="color: #267F99">string</span><span style="color: #000000">, </span><span style="color: #001080">initialCount</span><span style="color: #000000">: </span><span style="color: #267F99">number</span><span style="color: #000000">): </span><span style="color: #267F99">Outcome</span><span style="color: #000000">;</span>
@@ -92,12 +92,14 @@
 
 <span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">counterEventResolver</span><span style="color: #000000">( </span><span style="color: #008000">// It&#039;s this function that mutate the state when applying an event.</span>
 <span style="color: #000000">  </span><span style="color: #001080">state</span><span style="color: #000000">: </span><span style="color: #267F99">CounterState</span><span style="color: #000000">,</span>
-<span style="color: #000000">  </span><span style="color: #001080">event</span><span style="color: #000000">: </span><span style="color: #267F99">CounterEvents</span>
+<span style="color: #000000">  </span><span style="color: #001080">event</span><span style="color: #000000">: </span><span style="color: #267F99">CounterEvents</span><span style="color: #000000">,</span>
 <span style="color: #000000">): </span><span style="color: #267F99">Outcome</span><span style="color: #000000"> {</span>
 <span style="color: #000000">  </span><span style="color: #008000">/*...*/</span>
 <span style="color: #000000">}</span>
 
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aggregate</span><span style="color: #000000"> = </span><span style="color: #795E26">buildAggregate</span><span style="color: #000000">(</span><span style="color: #001080">initialState</span><span style="color: #000000">, </span><span style="color: #001080">eventResolver</span><span style="color: #000000">, {</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">commandId</span><span style="color: #000000"> = </span><span style="color: #A31515">&#039;command-id&#039;</span><span style="color: #000000">; </span><span style="color: #008000">// The command you are building the aggregate for.</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">aggregate</span><span style="color: #000000"> = </span><span style="color: #795E26">buildAggregate</span><span style="color: #000000">(</span><span style="color: #001080">commandId</span><span style="color: #000000">, </span><span style="color: #001080">initialState</span><span style="color: #000000">, </span><span style="color: #001080">eventResolver</span><span style="color: #000000">, {</span>
 <span style="color: #000000">  </span><span style="color: #001080">snapshotEvery:</span><span style="color: #000000"> </span><span style="color: #098658">2</span><span style="color: #000000">, </span><span style="color: #008000">// This options will generate snapshots every 2 events added</span>
 <span style="color: #000000">});</span>
 
@@ -120,7 +122,7 @@
 					<h2>Aggregate interface:</h2>
 				</a>
 				<pre><code class="language-typescript"><span style="color: #008000">// Aggregate interface</span>
-<span style="color: #001080">aggregate</span><span style="color: #000000">.</span><span style="color: #795E26">apply</span><span style="color: #000000">(</span><span style="color: #001080">events</span><span style="color: #000000">: </span><span style="color: #001080">Event</span><span style="color: #000000"> | </span><span style="color: #001080">Event</span><span style="color: #000000">[]): </span><span style="color: #001080">Outcome</span><span style="color: #000000">; </span><span style="color: #008000">// Apply an event to the aggregate.</span>
+<span style="color: #001080">aggregate</span><span style="color: #000000">.</span><span style="color: #795E26">apply</span><span style="color: #000000">(</span><span style="color: #001080">events</span><span style="color: #000000">: </span><span style="color: #001080">Event</span><span style="color: #000000"> | </span><span style="color: #001080">Event</span><span style="color: #000000">[]): </span><span style="color: #001080">ApplyEventOutcome</span><span style="color: #000000">; </span><span style="color: #008000">// Apply an event to the aggregate.</span>
 
 <span style="color: #001080">aggregate</span><span style="color: #000000">.</span><span style="color: #795E26">addEvent</span><span style="color: #000000">(</span><span style="color: #001080">events</span><span style="color: #000000">: </span><span style="color: #0070C1">E</span><span style="color: #000000">): </span><span style="color: #001080">Outcome</span><span style="color: #000000">; </span><span style="color: #008000">// Add and apply a new event to the aggregate.</span>
 <span style="color: #001080">aggregate</span><span style="color: #000000">.</span><span style="color: #795E26">getUncommmitedEvents</span><span style="color: #000000">(): </span><span style="color: #0070C1">E</span><span style="color: #000000">[]; </span><span style="color: #008000">// Returns new events created not commited yet.</span>
@@ -153,6 +155,9 @@
 						<a href="interfaces/aggregatestate.html" class="tsd-kind-icon">Aggregate<wbr>State</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/applyeventoutcomesuccess.html" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/command.html" class="tsd-kind-icon">Command</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -163,6 +168,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="interfaces/outcomesuccess.html" class="tsd-kind-icon">Outcome<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="modules.html#applyeventoutcome" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="modules.html#eventresolver" class="tsd-kind-icon">Event<wbr>Resolver</a>

@@ -93,7 +93,10 @@ export function buildAggregate<S extends AggregateState, E extends Event>(
   };
 }
 
-interface ApplyEventOutcomeSuccess extends OutcomeSuccess {
+export interface ApplyEventOutcomeSuccess extends OutcomeSuccess {
+  /**
+   * As the apply methods can take an Event arary it returns an array of OutcomeSuccess inside the data property.
+   */
   data: OutcomeSuccess[];
 }
 
