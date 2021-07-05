@@ -12,6 +12,7 @@ describe('apply()', () => {
         commandId: 'command-id',
         entityId: 'counter-id',
         sequence: 2,
+        metadata: {},
         payload: {
           number: 5,
         },
@@ -23,6 +24,7 @@ describe('apply()', () => {
         commandId: 'command-id',
         entityId: 'counter-id',
         sequence: 3,
+        metadata: {},
         payload: {
           number: 5,
         },
@@ -34,7 +36,6 @@ describe('apply()', () => {
 
       it('Then the event is applied', () => {
         expect(counter.state()).toStrictEqual({
-          commandId: 'commandId',
           count: 14,
           id: 'counter-id',
           sequence: 3,
@@ -49,6 +50,7 @@ describe('apply()', () => {
         commandId: 'command-id',
         entityId: 'counter-id',
         sequence: 200, // incoherent sequece
+        metadata: {},
         payload: {
           number: 5,
         },
@@ -68,6 +70,7 @@ describe('apply()', () => {
               commandId: 'command-id',
               entityId: 'counter-id',
               sequence: 200,
+              metadata: {},
               payload: {
                 number: 5,
               },

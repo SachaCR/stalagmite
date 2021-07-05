@@ -31,9 +31,14 @@ export interface Aggregate<S extends AggregateState, E extends Event> {
   eventsCommited(): void;
 
   /**
-   * @returns The current sequence of you aggregate.
+   * @returns The current sequence of your aggregate.
    */
   getSequence(): number;
+
+  /**
+   * @returns The current commandId of your aggregate.
+   */
+  getCommandId(): string;
 
   /**
    * @returns The list of events you added that need to be persisted in your event store. Call eventsCommited() when it's done to clear the array.
@@ -77,11 +82,6 @@ export interface AggregateState {
    * This is history revision of the aggregate.
    */
   sequence: number;
-
-  /**
-   * The command id related to this sequence.
-   */
-  commandId: string;
 }
 
 /**
@@ -127,6 +127,11 @@ export interface Event {
   entityId: string;
 
   /**
+   * The metadata of your event.
+   */
+  metadata: unknown;
+
+  /**
    * The payload of your event.
    */
   payload: unknown;
@@ -160,6 +165,11 @@ export interface Command {
    * The user that perform the command.
    */
   actorId: string;
+
+  /**
+   * The metadata of your command.
+   */
+  metadata: unknown;
 
   /**
    * The payload of your command.

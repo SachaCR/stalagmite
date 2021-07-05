@@ -1,23 +1,24 @@
-import { CounterState } from ".";
-import { Aggregate, Outcome } from "../../interfaces";
+import { CounterState } from '.';
+import { Aggregate, Outcome } from '../../interfaces';
 import {
   CounterEvents,
   counterInitiated,
   counterReseted,
   numberCounted,
-} from "./events";
+} from './events';
 
 export function buildInit(aggregate: Aggregate<CounterState, CounterEvents>) {
   return function init(counterId: string, initialCount: number): Outcome {
     const state = aggregate.state();
+    const commandId = aggregate.getCommandId();
 
     // Business rules
-    if (state.id !== "none") {
+    if (state.id !== 'none') {
       // We can't init a counter that has already an id.
       return {
-        outcome: "FAILURE",
-        errorCode: "COUNTER_INIT_FAILED",
-        reason: "This counter is already initiated",
+        outcome: 'FAILURE',
+        errorCode: 'COUNTER_INIT_FAILED',
+        reason: 'This counter is already initiated',
         data: {
           counterId: state.id,
         },
@@ -27,9 +28,9 @@ export function buildInit(aggregate: Aggregate<CounterState, CounterEvents>) {
     // We count only positive numbers
     if (initialCount <= 0) {
       return {
-        outcome: "FAILURE",
-        errorCode: "COUNTER_INIT_FAILED",
-        reason: "Counter allow only positive numbers",
+        outcome: 'FAILURE',
+        errorCode: 'COUNTER_INIT_FAILED',
+        reason: 'Counter allow only positive numbers',
         data: {
           initialCount,
         },
@@ -37,7 +38,7 @@ export function buildInit(aggregate: Aggregate<CounterState, CounterEvents>) {
     }
 
     // Create the event
-    const event = counterInitiated(state, counterId, initialCount);
+    const event = counterInitiated(commandId, state, counterId, initialCount);
 
     // Add it to aggregate
     return aggregate.addEvent(event);
@@ -47,14 +48,15 @@ export function buildInit(aggregate: Aggregate<CounterState, CounterEvents>) {
 export function buildCount(aggregate: Aggregate<CounterState, CounterEvents>) {
   return function count(number: number): Outcome {
     const state = aggregate.state();
+    const commandId = aggregate.getCommandId();
 
     // Business rules
     // We count only positive numbers
     if (number <= 0) {
       return {
-        outcome: "FAILURE",
-        errorCode: "COUNT_NUMBER_FAILED",
-        reason: "Counter allow only positive numbers",
+        outcome: 'FAILURE',
+        errorCode: 'COUNT_NUMBER_FAILED',
+        reason: 'Counter allow only positive numbers',
         data: {
           number,
         },
@@ -62,7 +64,7 @@ export function buildCount(aggregate: Aggregate<CounterState, CounterEvents>) {
     }
 
     // Create corresponding event
-    const event = numberCounted(state, number);
+    const event = numberCounted(commandId, state, number);
 
     // Add it to the aggregate
     return aggregate.addEvent(event);
@@ -72,9 +74,10 @@ export function buildCount(aggregate: Aggregate<CounterState, CounterEvents>) {
 export function buildReset(aggregate: Aggregate<CounterState, CounterEvents>) {
   return function reset(): Outcome {
     const state = aggregate.state();
+    const commandId = aggregate.getCommandId();
 
     // Create corresponding event
-    const event = counterReseted(state);
+    const event = counterReseted(commandId, state);
 
     // Add it to the aggregate
     return aggregate.addEvent(event);

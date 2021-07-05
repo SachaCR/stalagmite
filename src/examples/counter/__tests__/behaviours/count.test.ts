@@ -5,7 +5,6 @@ describe('count()', () => {
     const commandId = 'command-id';
 
     const initialState: CounterState = {
-      commandId: 'previous-command-id',
       sequence: 1,
       id: 'counter-id-1',
       count: 0,
@@ -22,7 +21,6 @@ describe('count()', () => {
 
         expect(counter.state()).toStrictEqual({
           id: 'counter-id-1',
-          commandId: 'command-id',
           sequence: 2,
           count: 5,
         });
@@ -34,6 +32,7 @@ describe('count()', () => {
             commandId: 'command-id',
             entityId: 'counter-id-1',
             sequence: 2,
+            metadata: {},
             payload: {
               number: 5,
             },
@@ -44,17 +43,16 @@ describe('count()', () => {
   });
 
   describe('count()', () => {
-    describe('Given a counter with count = 0 and sequence 1', () => {
+    describe('Given a counter with count = 0', () => {
       const commandId = 'command-id';
 
-      const initialState: CounterState = {
+      const state: CounterState = {
         id: 'counter-id-1',
-        commandId: 'previous-command-id',
         count: 0,
-        sequence: 1,
+        sequence: 0,
       };
 
-      const counter = createCounter(commandId, initialState);
+      const counter = createCounter(commandId, state);
 
       describe('When I count -5', () => {
         it('Then it returns a failure outcome and no event is created', () => {
@@ -69,8 +67,7 @@ describe('count()', () => {
 
           expect(counter.state()).toStrictEqual({
             id: 'counter-id-1',
-            sequence: 1,
-            commandId: 'command-id',
+            sequence: 0,
             count: 0,
           });
 

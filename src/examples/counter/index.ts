@@ -1,7 +1,7 @@
-import { Aggregate, AggregateState, buildAggregate } from "../..";
-import { Outcome } from "../../interfaces";
-import { buildCount, buildInit, buildReset } from "./behaviours";
-import { counterEventResolver, CounterEvents } from "./events";
+import { Aggregate, AggregateState, buildAggregate } from '../..';
+import { Outcome } from '../../interfaces';
+import { buildCount, buildInit, buildReset } from './behaviours';
+import { counterEventResolver, CounterEvents } from './events';
 
 export interface Counter extends Aggregate<CounterState, CounterEvents> {
   init(counterId: string, initialCount: number): Outcome;
@@ -16,22 +16,21 @@ export interface CounterState extends AggregateState {
 
 export function createCounter(
   commandId: string,
-  state?: CounterState
+  state?: CounterState,
 ): Counter {
   const initialState: CounterState = {
-    id: "none",
+    id: 'none',
     count: 0,
     sequence: 0,
-    commandId: commandId,
   };
-
-  if (state) {
-    state.commandId = commandId;
-  }
 
   const currentState = state || initialState;
 
-  const aggregate = buildAggregate(currentState, counterEventResolver);
+  const aggregate = buildAggregate(
+    commandId,
+    currentState,
+    counterEventResolver,
+  );
 
   return {
     init: buildInit(aggregate),

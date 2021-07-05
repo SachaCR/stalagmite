@@ -55,6 +55,7 @@ interface AggregateHistory<S, E extends Event> {
  * ```
  */
 export function buildAggregate<S extends AggregateState, E extends Event>(
+  commandId: string,
   state: S,
   resolver: EventResolver<S, E>,
   options?: {
@@ -74,6 +75,7 @@ export function buildAggregate<S extends AggregateState, E extends Event>(
     apply: (event: E | E[]) => apply(state, event, resolver, history),
     addEvent: (event: E) => addEvent(state, event, resolver, history, options),
     getSequence: () => state.sequence,
+    getCommandId: () => commandId,
     getUncommmitedEvents: () => history.uncommitedEvents,
     eventsCommited: () => (history.uncommitedEvents = []),
     state: () => cloneDeep(state),
