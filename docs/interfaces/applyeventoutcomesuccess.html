@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>OutcomeSuccess | Stalagmite - v0.0.9</title>
+	<title>ApplyEventOutcomeSuccess | Stalagmite - v0.0.9</title>
 	<meta name="description" content="Documentation for Stalagmite - v0.0.9">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -53,31 +53,24 @@
 					<a href="../modules.html">Stalagmite - v0.0.9</a>
 				</li>
 				<li>
-					<a href="outcomesuccess.html">OutcomeSuccess</a>
+					<a href="applyeventoutcomesuccess.html">ApplyEventOutcomeSuccess</a>
 				</li>
 			</ul>
-			<h1>Interface OutcomeSuccess</h1>
+			<h1>Interface ApplyEventOutcomeSuccess</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>It represent an operation result that succeeded.</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">OutcomeSuccess</span>
+						<a href="outcomesuccess.html" class="tsd-signature-type" data-tsd-kind="Interface">OutcomeSuccess</a>
 						<ul class="tsd-hierarchy">
 							<li>
-								<a href="applyeventoutcomesuccess.html" class="tsd-signature-type" data-tsd-kind="Interface">ApplyEventOutcomeSuccess</a>
+								<span class="target">ApplyEventOutcomeSuccess</span>
 							</li>
 						</ul>
 					</li>
@@ -90,8 +83,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="outcomesuccess.html#data" class="tsd-kind-icon">data</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="outcomesuccess.html#outcome" class="tsd-kind-icon">outcome</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="applyeventoutcomesuccess.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="applyeventoutcomesuccess.html#outcome" class="tsd-kind-icon">outcome</a></li>
 							</ul>
 						</section>
 					</div>
@@ -99,28 +92,28 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
 					<a name="data" class="tsd-anchor"></a>
 					<h3>data</h3>
-					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <a href="outcomesuccess.html" class="tsd-signature-type" data-tsd-kind="Interface">OutcomeSuccess</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
+						<p>Overrides <a href="outcomesuccess.html">OutcomeSuccess</a>.<a href="outcomesuccess.html#data">data</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/interfaces.ts#L266">interfaces.ts:266</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/buildAggregate.ts#L100">buildAggregate.ts:100</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>It&#39;s the result of the operation.
-								It can be anything you wants.
-							You should not let it to any and type it in your implementation.</p>
+							<p>As the apply methods can take an Event arary it returns an array of OutcomeSuccess inside the data property.</p>
 						</div>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="outcome" class="tsd-anchor"></a>
 					<h3>outcome</h3>
 					<div class="tsd-signature tsd-kind-icon">outcome<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">&quot;SUCCESS&quot;</span></div>
 					<aside class="tsd-sources">
+						<p>Inherited from <a href="outcomesuccess.html">OutcomeSuccess</a>.<a href="outcomesuccess.html#outcome">outcome</a></p>
 						<ul>
 							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/interfaces.ts#L260">interfaces.ts:260</a></li>
 						</ul>
@@ -144,9 +137,21 @@
 					<li class=" tsd-kind-interface">
 						<a href="aggregatestate.html" class="tsd-kind-icon">Aggregate<wbr>State</a>
 					</li>
-					<li class=" tsd-kind-interface">
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface">
 						<a href="applyeventoutcomesuccess.html" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome<wbr>Success</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
+								<a href="applyeventoutcomesuccess.html#data" class="tsd-kind-icon">data</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="applyeventoutcomesuccess.html#outcome" class="tsd-kind-icon">outcome</a>
+							</li>
+						</ul>
 					</li>
+				</ul>
+				<ul class="after-current">
 					<li class=" tsd-kind-interface">
 						<a href="command.html" class="tsd-kind-icon">Command</a>
 					</li>
@@ -156,21 +161,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="outcomefailure.html" class="tsd-kind-icon">Outcome<wbr>Failure</a>
 					</li>
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-interface">
+					<li class=" tsd-kind-interface">
 						<a href="outcomesuccess.html" class="tsd-kind-icon">Outcome<wbr>Success</a>
-						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="outcomesuccess.html#data" class="tsd-kind-icon">data</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="outcomesuccess.html#outcome" class="tsd-kind-icon">outcome</a>
-							</li>
-						</ul>
 					</li>
-				</ul>
-				<ul class="after-current">
 					<li class=" tsd-kind-type-alias">
 						<a href="../modules.html#applyeventoutcome" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome</a>
 					</li>

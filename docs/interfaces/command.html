@@ -96,6 +96,7 @@
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="command.html#actorid" class="tsd-kind-icon">actor<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="command.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="command.html#metadata" class="tsd-kind-icon">metadata</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="command.html#name" class="tsd-kind-icon">name</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="command.html#payload" class="tsd-kind-icon">payload</a></li>
 							</ul>
@@ -111,7 +112,7 @@
 					<div class="tsd-signature tsd-kind-icon">actor<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/1eec4c4/src/interfaces.ts#L160">interfaces.ts:160</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/interfaces.ts#L167">interfaces.ts:167</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -126,7 +127,7 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/1eec4c4/src/interfaces.ts#L150">interfaces.ts:150</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/interfaces.ts#L157">interfaces.ts:157</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -136,12 +137,27 @@
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="metadata" class="tsd-anchor"></a>
+					<h3>metadata</h3>
+					<div class="tsd-signature tsd-kind-icon">metadata<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">unknown</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/interfaces.ts#L172">interfaces.ts:172</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>The metadata of your command.</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="name" class="tsd-anchor"></a>
 					<h3>name</h3>
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/1eec4c4/src/interfaces.ts#L155">interfaces.ts:155</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/interfaces.ts#L162">interfaces.ts:162</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -156,7 +172,7 @@
 					<div class="tsd-signature tsd-kind-icon">payload<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">unknown</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/1eec4c4/src/interfaces.ts#L165">interfaces.ts:165</a></li>
+							<li>Defined in <a href="https://github.com/SachaCR/stalagmite/blob/8f1dc4a/src/interfaces.ts#L177">interfaces.ts:177</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -183,6 +199,9 @@
 					<li class=" tsd-kind-interface">
 						<a href="aggregatestate.html" class="tsd-kind-icon">Aggregate<wbr>State</a>
 					</li>
+					<li class=" tsd-kind-interface">
+						<a href="applyeventoutcomesuccess.html" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome<wbr>Success</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
@@ -193,6 +212,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="command.html#id" class="tsd-kind-icon">id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="command.html#metadata" class="tsd-kind-icon">metadata</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="command.html#name" class="tsd-kind-icon">name</a>
@@ -212,6 +234,9 @@
 					</li>
 					<li class=" tsd-kind-interface">
 						<a href="outcomesuccess.html" class="tsd-kind-icon">Outcome<wbr>Success</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="../modules.html#applyeventoutcome" class="tsd-kind-icon">Apply<wbr>Event<wbr>Outcome</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="../modules.html#eventresolver" class="tsd-kind-icon">Event<wbr>Resolver</a>
