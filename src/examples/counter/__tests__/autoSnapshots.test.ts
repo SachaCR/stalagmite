@@ -1,4 +1,4 @@
-import { CounterState, createCounter } from "..";
+import { CounterState } from "..";
 import { buildAggregate } from "../../../buildAggregate";
 import { buildCount, buildInit, buildReset } from "../behaviours";
 import { counterEventResolver } from "../events";
